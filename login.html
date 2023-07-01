@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 30%;
+            height: 60vh;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(57, 128, 51, 0.4); /* Alterado para a cor #398033 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: -20px; /* Mover todo o conteúdo um pouco para cima */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #398033;
+        }
+
+        img.logo {
+            width: 100px; /* Alterar para 100x100 */
+            height: 100px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 70%;
+            padding: 15px;
+            margin-bottom: 50px;
+            border-radius: 3px;
+            border: 1px solid #398033; /* Alterado para a cor #398033 */
+        }
+
+        button {
+            width: 70%;
+            padding: 15px;
+            background-color: #FF7E21;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            font-size: 14px;
+            color: #2B6A26; /* Cor do texto do link */
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" class="logo" alt="Logo">
+        <h1>Login</h1>
+        <input type="text" placeholder="Nome">
+        <input type="password" placeholder="Senha">
+        <button>Entrar</button>
+        <p class="forgot-password"><a href="https://www.google.com" target="_blank" style="color: #2B6A26;">Esqueceu o usuário ou senha? Clique aqui!</a></p>
+    </div>
+</body>
+</html>

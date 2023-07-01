@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Usuário</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 5%;
+            height: 100vh;
+            background-color: #FD8920;
+            transition: width 0.5s, background-color 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 1;
+        }
+
+        .sidebar:hover {
+            width: 20%;
+            background-color: #2F2F37;
+        }
+
+        .sidebar img {
+            width: 50px;
+            height: 50px;
+            margin: 20px 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-family: "Roboto", sans-serif;
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .sidebar a span {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #2F2F37;
+        }
+
+        .sidebar a:hover:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #FD8920;
+        }
+
+        .sidebar:hover a span {
+            display: inline-block;
+        }
+
+        .content {
+            flex-grow: 1;
+            background-color: #F6F6F6;
+            display: flex;
+            flex-direction: column;
+            margin-left: 5%;
+            transition: background-color 0.5s;
+        }
+
+        .content.dark {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .top-bar {
+            height: 5vh; /* Alterado para 10% da altura da viewport */
+            background-color: #2F2F37;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adicionado a sombra */
+        }
+
+        .top-bar a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
+        <a href="https://www.google.com" target="_blank">
+            <img id="perfil-image" src="perfil.png" alt="Perfil">
+            <span id="perfil-text">Perfil</span>
+        </a>
+        <a href="https://www.google.com" target="_blank">
+            <img id="calendario-image" src="calendario.png" alt="Calendário">
+            <span id="calendario-text">Calendário</span>
+        </a>
+        <a href="https://www.google.com" target="_blank">
+            <img id="oficinas-image" src="livro.png" alt="Minhas Oficinas">
+            <span id="oficinas-text">Minhas Oficinas</span>
+        </a>
+    </div>
+    <div class="content">
+        <div class="top-bar">
+            <a href="#">Opção 1</a>
+            <a href="#">Opção 2</a>
+            <a href="#">Opção 3</a>
+        </div>
+    </div>
+
+    <script>
+        function expandSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.style.width = '20%';
+            var content = document.querySelector('.content');
+            content.classList.add('dark');
+        }
+
+        function shrinkSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.style.width = '5%';
+            var content = document.querySelector('.content');
+            content.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>

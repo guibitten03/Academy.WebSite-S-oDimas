@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cadastro de Adiministrador</title>
+    <title>Cadastro de Professor</title>
     <link rel="stylesheet" href="{% static 'register.css' %}">
 </head>
 <body>
@@ -12,7 +12,7 @@
             <div class="image2"></div>
         </div>
         <div class="content-container">
-            <h1>Adiministrador</h1>
+            <h1>Professor</h1>
             <div class="form-container">
                 <input type="text" name="nome" placeholder="Nome" style="width: 100%;">
                 <div style="width: 100%;">
@@ -20,11 +20,7 @@
                     <input type="text" name="telefone" placeholder="Telefone">
                 </div>
                 <div style="width: 100%;">
-                    <select name="genero">
-                        <option value="">Gênero</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
-                    </select>
+                    <input type="text" name="especialidade" placeholder="Especialidade">
                     <input type="email" name="email" placeholder="E-mail">
                 </div>
                 <div style="width: 100%;">

@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F2F2F2;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-container {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px #21441B;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.green-container {
+    width: 20%;
+    height: 100%;
+    background-color: #21441B;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image1 {
+    width: 200px;
+    height: 200px;
+    background-image: url('img/new_simbol.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.image2 {
+    width: 200px;
+    height: 100px;
+    background-image: url("img/simbolo3.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 10px;
+}
+
+.content-container {
+    width: 80%;
+    height: 100%;
+    background-color: #FFF;
+    float: left;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 0;
+    color: rgba(0, 0, 0, 0.8); /* Opacidade ajustada */
+}
+
+.form-container {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+}
+
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container select,
+.form-container input[type="email"],
+.form-container input[type="date"] {
+    width: 48%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #21441B;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #21441B;
+}
+
+.form-container input[type="text"]:first-child {
+    width: 100%;
+}
+
+.form-container input[type="submit"] {
+    width: 20%;
+    height: 5%;
+    padding: 10px;
+    background-color: #FF7E21;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    margin-top: auto;
+    margin-bottom: 20px;
+    display: block;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+::placeholder {
+    font-size: 14px;
+    color: #999;
+}

@@ -2,6 +2,9 @@ from django.shortcuts import render
 
 # Create your views here.
 
+def homeView(request):
+    return render(request, 'home.html')
+
 def registerAdminView(request):
     return render(request,'register-admin.html')
 

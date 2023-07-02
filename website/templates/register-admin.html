@@ -6,38 +6,40 @@
     <link rel="stylesheet" href="{% static 'register.css' %}">
 </head>
 <body>
-    <div class="main-container">
-        <div class="green-container">
-            <div class="image1"></div>
-            <div class="image2"></div>
-        </div>
-        <div class="content-container">
-            <h1>Adiministrador</h1>
-            <div class="form-container">
-                <input type="text" name="nome" placeholder="Nome" style="width: 100%;">
-                <div style="width: 100%;">
-                    <input type="text" name="cpf" placeholder="CPF">
-                    <input type="text" name="telefone" placeholder="Telefone">
-                </div>
-                <div style="width: 100%;">
-                    <select name="genero">
-                        <option value="">Gênero</option>
-                        <option value="masculino">Masculino</option>
-                        <option value="feminino">Feminino</option>
-                    </select>
-                    <input type="email" name="email" placeholder="E-mail">
-                </div>
-                <div style="width: 100%;">
-                    <input type="text" name="endereco" placeholder="Endereço">
-                    <input placeholder="Data de Nascimento" name="data_nascimento" class="textbox-n" type="text" onfocus="(this.type='date')" id="date" />
-                </div>
-                <div style="width: 100%;">
-                    <input type="password" name="senha" placeholder="Senha">
-                    <input type="password" name="confirmar_senha" placeholder="Confirmar Senha">
-                </div>
+    <form method='POST'>
+        <div class="main-container">
+            <div class="green-container">
+                <div class="image1"></div>
+                <div class="image2"></div>
             </div>
-            <input type="submit" value="Cadastrar" style="width: 20%; height: 5%; background-color: #FF7E21; color: #FFF; border: none; cursor: pointer; margin-top: auto; margin-bottom: 20px; display: block; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <div class="content-container">
+                <h1>Adiministrador</h1>
+                <div class="form-container">
+                    <input type="text" name="nome" placeholder="Nome" style="width: 100%;">
+                    <div style="width: 100%;">
+                        <input type="text" name="cpf" placeholder="CPF">
+                        <input type="text" name="telefone" placeholder="Telefone">
+                    </div>
+                    <div style="width: 100%;">
+                        <select name="genero">
+                            <option value="">Sexo</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="feminino">Feminino</option>
+                        </select>
+                        <input type="email" name="email" placeholder="E-mail">
+                    </div>
+                    <div style="width: 100%;">
+                        <input type="text" name="endereco" placeholder="Endereço">
+                        <input placeholder="Data de Nascimento" name="data_nascimento" class="textbox-n" type="text" onfocus="(this.type='date')" id="date" />
+                    </div>
+                    <div style="width: 100%;">
+                        <input type="password" name="senha" placeholder="Senha">
+                        <input type="password" name="confirmar_senha" placeholder="Confirmar Senha">
+                    </div>
+                </div>
+                <input type="submit" value="Cadastrar" style="width: 20%; height: 5%; background-color: #FF7E21; color: #FFF; border: none; cursor: pointer; margin-top: auto; margin-bottom: 20px; display: block; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            </div>
         </div>
-    </div>
+    </form>
 </body>
 </html>

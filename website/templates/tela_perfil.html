@@ -32,8 +32,9 @@
 
         .sidebar img {
             width: 50px;
-            height: 50px;
+            aspect-ratio: 1/1;
             margin: 20px 10px;
+            
         }
 
         .sidebar a {
@@ -120,6 +121,25 @@
             flex-direction: column;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adicionado sombra */
+            position: relative; /* Adicionado para posicionar a imagem */
+        }
+
+        .container img {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+        #caixa1 span {
+            font-family: "Roboto", sans-serif;
+            font-size: 42px;
+            position: absolute;
+            top: 50px;
+            left: 280px;
+            color: #333;
         }
 
         .sub-container {
@@ -173,6 +193,19 @@
         .content-container.dark .dark-overlay {
             opacity: 0.8;
         }
+
+        .textos {
+             display: flex;
+            flex-wrap: wrap;
+        }
+
+        .textos span {
+            box-sizing: border-box;
+            padding: 10px; /* Add spacing around the texts */
+            font-size: 30px;
+            font-family: "Roboto", sans-serif;
+        }
+
     </style>
 </head>
 <body>
@@ -196,8 +229,23 @@
         </div>
     </div>
     <div class="content-container">
-        <div class="container" style="height: 30vh;"></div>
-        <div class="container" style="height: 50vh;"></div>
+        <div class="container"id="caixa1" style="height: 30vh;">
+            <img src="tururu.jpg" alt="Imagem" />
+            <span id="dynamic-text">Placeholder</span>
+            <span id="dynamic-codigo" style="top: 150px; font-size: 30px;">codigo</span>
+        </div>
+        <div class="container" style="height: 50vh;">
+            <div class="textos">
+              <span id="email">email</span>
+              <span id="cpf">cpf</span>
+              <span id="endereco">endereco</span>
+              <span id="telefone">telefone</span>
+              <span id="genero">genero</span>
+              <span id="nascimento">nascimento</span>
+              <span id="responsavel">responsavel</span>
+            </div>
+        </div>
+          
         <div class="dark-overlay"></div>
     </div>
 
@@ -215,6 +263,33 @@
             var content = document.querySelector('.content-container');
             content.classList.remove('dark');
         }
+
+        // Exemplo de código para obter o texto do banco de dados e inseri-lo no elemento <span>
+        var dynamicText = document.getElementById('dynamic-text');
+        var dynamicCode = document.getElementById('dynamic-codigo');
+
+        var email = document.getElementById('email');
+        var cpf = document.getElementById('cpf');
+        var endereco = document.getElementById('endereco');
+        var telefone = document.getElementById('telefone');
+        var genero = document.getElementById('genero');
+        var nascimento = document.getElementById('nascimento');
+        var responsavel = document.getElementById('responsavel');
+
+
+        // Aqui você pode fazer uma chamada AJAX ou utilizar qualquer método para buscar o texto do banco de dados
+        var databaseText = "Usuario"; // Substitua isso pelo texto do banco de dados
+        var dynamicCode = "Codigo"; // Substitua isso pelo texto do banco de dados
+
+        var email = "email"; // Substitua isso pelo texto do banco de dados
+        var cpf = "cpf"; // Substitua isso pelo texto do banco de dados
+        var endereco = "endereco"; // Substitua isso pelo texto do banco de dados
+        var telefone = "telefone"; // Substitua isso pelo texto do banco de dados
+        var genero = "genero"; // Substitua isso pelo texto do banco de dados
+        var nascimento = "nascimento"; // Substitua isso pelo texto do banco de dados
+        var responsavel = "responsavel"; // Substitua isso pelo texto do banco de dados
+
+        dynamicText.textContent = databaseText ? databaseText : "Sem dados";
     </script>
 </body>
 </html>

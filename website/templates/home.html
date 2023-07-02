@@ -1,4 +1,4 @@
-{% comment %} {% load static %} {% endcomment %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,46 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Website</title>
-    {% comment %} <link rel="stylesheet" href="{% static home.css %}"> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'home.css' %}">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    
-    <style>
-
-        body {
-            padding:0;
-            margin:0;
-        }
-
-        ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: #333;
-          }
-          
-          li {
-            float: left;
-          }
-          
-          li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-          }
-          
-          /* Change the link color to #111 (black) on hover */
-          li a:hover {
-            background-color: #111;
-          }
-
-          .active {
-            background-color: #04AA6D;
-          }
-
-    </style>
 
   </head>
   <body>
@@ -54,16 +16,32 @@
         <div class='container'>
             <div class='header'>
                 <ul>
-                    <li><a href="home">Início</a></li>
-                    <li><a href="about">Sobre</a></li>
-                    <li><a href="workshops">Oficinas</a></li>
-                    <li><a href="location">Localização</a></li>
-                    <li style="float:right"><a href="login">Entrar</a></li>
-                    <li style="float:right"><a href="student-sign">Registrar</a></li>
-                    <li style="float:right"><a href="professor-sign">Torne-se Professor</a></li>
+                    <li><a href="{% url 'home' %}">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#workshops">Oficinas</a></li>
+                    <li><a href="#location">Localização</a></li>
+                    <li style="float:right"><a href="{% url 'login' %}">Entrar</a></li>
+                    <li style="float:right"><a href="{% url 'student-sign' %}">Registrar</a></li>
+                    <li style="float:right"><a href="{% url 'adm-sign' %}">Torne-se Professor</a></li>
                   </ul>
             </div>
         </div>
+
+        <div id="about" class='container'>
+            <h1>Sobre</h1>
+
+        </div>
+
+        <div id="workshops" class='container'>
+            <h1>Oficinas</h1>
+
+        </div>
+
+        <div id="location" class='container'>
+            <h1>Localização</h1>
+
+        </div>
+
     </main>
   </body>
 </html>

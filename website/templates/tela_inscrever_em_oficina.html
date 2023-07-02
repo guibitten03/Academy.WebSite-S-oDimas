@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quilombo Urbano</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 5%;
+            height: 100vh;
+            background-color: #FD8920;
+            transition: width 0.5s, background-color 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 1;
+        }
+
+        .sidebar:hover {
+            width: 20%;
+            background-color: #2F2F37;
+        }
+
+        .sidebar img {
+            width: 40px;
+            aspect-ratio: 1/1;
+            margin: 20px 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .sidebar a span {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #2F2F37;
+        }
+
+        .sidebar a:hover:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #FD8920;
+        }
+
+        .sidebar:hover a span {
+            display: inline-block;
+        }
+
+        .content {
+            flex-grow: 1;
+            background-color: #F6F6F6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 5%;
+            transition: background-color 0.5s;
+        }
+
+        .sidebar:hover + .content,
+        .sidebar:hover + .content .top-bar,
+        .sidebar:hover + .content .container,
+        .sidebar:hover + .content .sub-container {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .top-bar {
+            height: 5vh;
+            background-color: #2F2F37;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            
+            margin: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s;
+        }
+
+        .top-bar img {
+
+            height: 50px;
+            margin: 0 20px;
+        }
+
+        .container {
+            background-color: white;
+            margin-top: 20px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adicionado sombra */
+        }
+
+        .sub-container {
+            width: 90%;
+            height: 30vh;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+
+        /* Adicionado novo estilo para o contêiner da barra do topo */
+        .top-bar-container {
+            background-color: #2F2F37;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+
+            padding: 5px;
+            margin: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s;
+        }
+
+        /* Ajuste no espaçamento do conteúdo abaixo da barra do topo */
+        .content-container {
+            flex-grow: 1;
+            background-color: #F6F6F6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 5%;
+            margin-top: 5vh;
+            transition: background-color 0.5s;
+        }
+
+        /* Adicionado estilo para o conteúdo afetado pelo efeito dark */
+        .dark-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .content-container.dark .dark-overlay {
+            opacity: 0.8;
+        }
+
+        #table-oficinas {
+            width: 90%;
+
+            margin: 20px;
+        }
+
+        #table-oficinas, th, td{
+            border-bottom: 2px solid #FF7A00;
+            border-collapse: collapse;
+        }
+
+        #table-oficinas th,  #table-oficinas td {
+            padding: 20px;
+            text-align: center;
+        }
+
+        #table-oficinas th {
+            color: #FD8920;
+        }
+
+        #table-oficinas div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-bottom: 2px solid #FF7A00;
+            padding: 5px;
+        }
+
+        #table-oficinas input {
+            margin-left: 5px;
+            border: none;
+        }
+
+        #table-oficinas img{
+            aspect-ratio: 1/1;
+            height: 15px;
+
+        }
+
+        #botao-adicionar {
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+
+            font-size: 100%;
+
+            background-color: #F59D5E;
+        }
+
+        @media screen and (max-width: 1000px){
+            #table-oficinas th,  #table-oficinas td {
+                padding: 20px 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
+        <a href="https://www.google.com" target="_blank">
+            <img id="perfil-image" src="img/perfil.png" alt="Perfil">
+            <span id="perfil-text">Perfil</span>
+        </a>
+        <a href="https://www.google.com" target="_blank">
+            <img id="calendario-image" src="img/calendario.png" alt="Calendário">
+            <span id="calendario-text">Calendário</span>
+        </a>
+        <a href="https://www.google.com" target="_blank">
+            <img id="oficinas-image" src="img/livro.png" alt="Minhas Oficinas">
+            <span id="oficinas-text">Minhas Oficinas</span>
+        </a>
+    </div>
+    <div class="top-bar-container">
+        <div class="top-bar">
+            <a href="index.html"><img src="img/simbolo3.png" alt="Logo - Quilombo Urbano"></a>
+        </div>
+    </div>
+    <div class="content-container">
+        <!--<div class="container" style="height: 30vh;"></div>-->
+        <div class="container" style="height: 85vh;">
+            <table id="table-oficinas">
+                <tr>
+                    <th></th>
+                    <th>Nome</th>
+                    <th>Tipo</th>
+                    <th>Descrição</th>
+                </tr>
+                
+                <tr id="Filtros">
+                    <th>Filtrar por:</th>
+                    <th>
+                        <div>
+                            <img src="img/search.png" alt="Ícone de lupa">
+                            <input type="text" name="filtro-nome" id="filtro-nome">
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            <img src="img/search.png" alt="Ícone de lupa">
+                            <input type="text" name="filtro-tipo" id="filtro-tipo">
+                        </div>
+                    </th>
+                    <th>
+                        <div>
+                            <img src="img/search.png" alt="Ícone de lupa">
+                            <input type="text" name="filtro-desc" id="filtro-desc">
+                        </div>
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td><input type="checkbox" name="checkbox-01" id="checkbox-01" class="checkbox-input"></td>
+                    <td>Nome</td>
+                    <td>Tipo</td>
+                    <td>Descrição</td>
+                </tr>
+
+                <tr>
+                    <td><input type="checkbox" name="checkbox-02" id="checkbox-02" class="checkbox-input"></td>
+                    <td>Nome</td>
+                    <td>Tipo</td>
+                    <td>Descrição</td>
+                </tr>
+
+                <tr>
+                    <td><input type="checkbox" name="checkbox-03" id="checkbox-03" class="checkbox-input"></td>
+                    <td>Nome</td>
+                    <td>Tipo</td>
+                    <td>Descrição</td>
+                </tr>
+            </table>
+
+            <input type="button" value="Adicionar" id="botao-adicionar">
+        </div>
+        <div class="dark-overlay"></div>
+    </div>
+
+    <script>
+        function expandSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.style.width = '15%';
+            var content = document.querySelector('.content-container');
+            content.classList.add('dark');
+        }
+
+        function shrinkSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.style.width = '5%';
+            var content = document.querySelector('.content-container');
+            content.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>

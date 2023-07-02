@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>criar oficinas-image</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 5%;
+            height: 100vh;
+            background-color: #FD8920;
+            transition: width 0.5s, background-color 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            z-index: 1;
+        }
+
+        .sidebar:hover {
+            width: 20%;
+            background-color: #2F2F37;
+        }
+
+        .sidebar img {
+            width: 50px;
+            aspect-ratio: 1/1;
+            margin: 20px 10px;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-family: "Roboto", sans-serif;
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .sidebar a span {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #2F2F37;
+        }
+
+        .sidebar a:hover:before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: #FD8920;
+        }
+
+        .sidebar:hover a span {
+            display: inline-block;
+        }
+
+        .content {
+            flex-grow: 1;
+            background-color: #F6F6F6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 5%;
+            transition: background-color 0.5s;
+        }
+
+        .top-bar {
+            height: 5vh;
+            background-color: #2F2F37;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s;
+        }
+
+        .top-bar a {
+            text-decoration: none;
+            color: white;
+            margin: 0 20px;
+        }
+
+        .container {
+            background-color: white;
+            margin-top: 20px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .container img {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .sub-container {
+            width: 90%;
+            height: 30vh;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+
+        .top-bar-container {
+            background-color: #2F2F37;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s;
+        }
+
+        .content-container {
+            flex-grow: 1;
+            background-color: #F6F6F6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 5%;
+            margin-top: 5vh;
+            transition: background-color 0.5s;
+        }
+
+        .white-container {
+            width: 70%;
+            background-color: white;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .white-container > div {
+            width: 90%;
+            height: 80vh;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+        }
+
+        .white-container input[name="nome"],
+        .white-container input[name="codigo"],
+        .white-container input[name="horario"],
+        .white-container input[name="sala"],
+        .white-container textarea[name="descricao"]
+         {
+            width: 45%;
+            padding: 10px;
+            height: 5%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 20px;
+            box-sizing: border-box;
+            border: 1px solid #21441B;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: #21441B;
+        }
+        .form-container input[type="submit"] {
+            width: 20%;
+            height: 5%;
+            padding: 10px;
+            background-color: #FF7E21;
+            color: #FFF;
+            border: none;
+            cursor: pointer;
+            margin-top: auto;
+            margin-bottom: 20px;
+            display: block;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .content-container.dark .dark-overlay {
+            opacity: 0.8;
+        }
+
+        .image-drop-area {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        
+        .image-drop-area.hover {
+            border-color: #FD8920;
+        }
+        
+        .image-drop-area img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
+        <a href="https://www.google.com" target="_blank">
+            <img id="perfil-image" src="img/perfil.png" alt="Perfil">
+            <span id="perfil-text">Perfil</span>
+        </a>
+        <a href="https://www.google.com" target="_blank">
+            <img id="calendario-image" src="img/calendario.png" alt="Calendário">
+            <span id="calendario-text">Calendário</span>
+        </a>
+        <a href="https://www.google.com" target="_blank">
+            <img id="oficinas-image" src="img/livro.png" alt="Minhas Oficinas">
+            <span id="oficinas-text">Minhas Oficinas</span>
+        </a>
+    </div>
+    <div class="top-bar-container">
+        <div class="top-bar">
+            <a href="#">Opção 3</a>
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="white-container">
+            <div class="image-drop-area" id="imageDropArea" ondragover="handleDragOver(event)" ondragenter="handleDragEnter(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+                <label for="imagemInput">Arraste e solte uma imagem aqui</label>
+                <img src="img/profile.png" alt="Profile Image">
+            </div>
+            <div class="add-image-button">
+                <label for="imagemInput">Adicionar imagem</label>
+                <input type="file" name="imagem" accept="image/*" id="imagemInput" onchange="handleImageUpload(event)">
+            </div>
+            <img src="" alt="Preview" id="imagePreview" style="display: none;">
+            <div>
+                <input type="text" name="nome" placeholder="nome">
+                <input type="text" name="codigo" placeholder="codigo">
+                <input type="text" name="horario" placeholder="horario">
+                <input type="text" name="sala" placeholder="sala">
+            </div>
+            <textarea name="descricao" placeholder="descricao"></textarea>
+
+        </div>
+        <input type="submit" value="Cadastrar" style="width: 20%; height: 5%; background-color: #FF7E21; color: #FFF; border: none; cursor: pointer; margin-top: auto; margin-bottom: 20px; display: block; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+
+        <div class="dark-overlay"></div>
+    </div>
+
+    <script>
+        function handleDragOver(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            event.dataTransfer.dropEffect = 'copy';
+            const imageDropArea = document.getElementById('imageDropArea');
+            imageDropArea.classList.add('hover');
+        }
+
+        function handleDragEnter(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const imageDropArea = document.getElementById('imageDropArea');
+            imageDropArea.classList.add('hover');
+        }
+
+        function handleDragLeave(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const imageDropArea = document.getElementById('imageDropArea');
+            imageDropArea.classList.remove('hover');
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const file = event.dataTransfer.files[0];
+            handleImage(file);
+        }
+
+        function handleImageUpload(event) {
+            const file = event.target.files[0];
+            handleImage(file);
+        }
+
+        function handleImage(file) {
+            const imageDropArea = document.getElementById('imageDropArea');
+            const imagePreview = document.getElementById('imagePreview');
+
+            if (file.type.match('image.*')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                    imageDropArea.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = '';
+                imagePreview.style.display = 'none';
+                imageDropArea.style.display = 'block';
+                imageDropArea.innerText = 'Formato de arquivo inválido!';
+            }
+        }
+
+        function expandSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.style.width = '15%';
+            var content = document.querySelector('.content-container');
+            content.classList.add('dark');
+        }
+
+        function shrinkSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.style.width = '5%';
+            var content = document.querySelector('.content-container');
+            content.classList.remove('dark');
+        }
+    </script>
+</body>
+</html>

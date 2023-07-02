@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="{% static 'register.css' %}">
 </head>
 <body>
-    <form mehotd='POST'>
+    <form mehotd='POST' action="{% url 'professor:register' %}">
+        {% csrf_token %}
         <div class="main-container">
             <div class="green-container">
                 <div class="image1"></div>
@@ -15,21 +16,21 @@
             <div class="content-container">
                 <h1>Professor</h1>
                 <div class="form-container">
-                    <input type="text" name="nome" placeholder="Nome" style="width: 100%;">
+                    <input type="text" name="name" placeholder="Nome" style="width: 100%;">
                     <div style="width: 100%;">
                         <input type="text" name="cpf" placeholder="CPF">
-                        <input type="text" name="telefone" placeholder="Telefone">
+                        <input type="text" name="phone_number" placeholder="Telefone">
                     </div>
                     <div style="width: 100%;">
-                        <input type="text" name="especialidade" placeholder="Especialidade">
+                        <input type="text" name="especiality" placeholder="Especialidade">
                         <input type="email" name="email" placeholder="E-mail">
                     </div>
                     <div style="width: 100%;">
-                        <input type="text" name="endereco" placeholder="Endereço">
-                        <input placeholder="Data de Nascimento" name="data_nascimento" class="textbox-n" type="text" onfocus="(this.type='date')" id="date" />
+                        <input type="text" name="address" placeholder="Endereço">
+                        <input placeholder="Data de Nascimento" name="birth_date" class="textbox-n" type="text" onfocus="(this.type='date')" id="date" />
                     </div>
                     <div style="width: 100%;">
-                        <input type="password" name="senha" placeholder="Senha">
+                        <input type="password" name="password" placeholder="Senha">
                         <input type="password" name="confirmar_senha" placeholder="Confirmar Senha">
                     </div>
                 </div>

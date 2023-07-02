@@ -65,13 +65,14 @@
     </style>
 </head>
 <body>
-    <form method='POST'>
+    <form method='POST' action="{% url 'user:login' %}">
+        {% csrf_token %}
         <div class="container">
             <img src="logo.png" class="logo" alt="Logo">
             <h1>Login</h1>
-            <input type="text" placeholder="Nome">
-            <input type="password" placeholder="Senha">
-            <button>Entrar</button>
+            <input type="text" name="username" placeholder="Nome">
+            <input type="password" name="password" placeholder="Senha">
+            <button type="submit">Entrar</button>
             <p class="forgot-password"><a href="https://www.google.com" target="_blank" style="color: #2B6A26;">Esqueceu o usuário ou senha? Clique aqui!</a></p>
         </div>
     </form>

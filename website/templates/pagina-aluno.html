@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Usuário</title>
@@ -36,7 +37,7 @@
             width: 50px;
             aspect-ratio: 1/1;
             margin: 20px 10px;
-            
+
         }
 
         .sidebar a {
@@ -58,6 +59,11 @@
 
         .sidebar a:hover {
             background-color: #2F2F37;
+        }
+
+        .top-bar img {
+            height: 50px;
+            margin: 0 20px;
         }
 
         .sidebar a:hover:before {
@@ -84,10 +90,10 @@
             transition: background-color 0.5s;
         }
 
-        .sidebar:hover + .content,
-        .sidebar:hover + .content .top-bar,
-        .sidebar:hover + .content .container,
-        .sidebar:hover + .content .sub-container {
+        .sidebar:hover+.content,
+        .sidebar:hover+.content .top-bar,
+        .sidebar:hover+.content .container,
+        .sidebar:hover+.content .sub-container {
             background-color: rgba(0, 0, 0, 0.8);
         }
 
@@ -103,12 +109,11 @@
             align-items: center;
             color: white;
             font-size: 20px;
-            font-family: "Roboto", sans-serif;
+            
             margin: 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.5s;
         }
-
         .top-bar a {
             text-decoration: none;
             color: white;
@@ -122,8 +127,10 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adicionado sombra */
-            position: relative; /* Adicionado para posicionar a imagem */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Adicionado sombra */
+            position: relative;
+            /* Adicionado para posicionar a imagem */
         }
 
         .container img {
@@ -156,16 +163,16 @@
             background-color: #2F2F37;
             width: 100%;
             display: flex;
-            justify-content: space-around;
+            justify-content: flex-end;
             align-items: center;
             color: white;
             font-size: 20px;
-            font-family: "Roboto", sans-serif;
+
+            padding: 5px;
             margin: 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.5s;
         }
-
         /* Ajuste no espaçamento do conteúdo abaixo da barra do topo */
         .content-container {
             flex-grow: 1;
@@ -197,22 +204,25 @@
         }
 
 
-        .textos, .titulos {
-             display: flex;
+        .textos,
+        .titulos {
+            display: flex;
             flex-wrap: wrap;
             flex-direction: column;
             align-items: start;
         }
 
-        .textos span,.titulos span {
+        .textos span,
+        .titulos span {
             box-sizing: border-box;
-            padding: 10px; /* Add spacing around the texts */
+            padding: 10px;
+            /* Add spacing around the texts */
             font-size: 30px;
             font-family: "Roboto", sans-serif;
-        } 
-
+        }
     </style>
 </head>
+
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
         <a href="{% url 'user:campus' user.user_id %}">
@@ -230,8 +240,8 @@
     </div>
     <div class="top-bar-container">
         <div class="top-bar">
-            <a href="#">Logo</a>
-            <a href="{% url 'user:logout' %}">Sair</a>
+            <a href="{% url 'pages:home' %}"><img src="{% static 'img/simbolo3.png' %}"
+                    alt="Logo - Quilombo Urbano"></a>
         </div>
     </div>
     <div class="content-container">
@@ -252,7 +262,7 @@
             </div>
         </div>
     </div>
-        <div class="dark-overlay"></div>
+    <div class="dark-overlay"></div>
     </div>
 
     <script>
@@ -270,8 +280,9 @@
             content.classList.remove('dark');
         }
 
- 
+
 
     </script>
 </body>
+
 </html>

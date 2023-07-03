@@ -67,6 +67,13 @@
     </style>
 </head>
 <body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><script>alert('{{ message }}')</script></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <form method='POST' action="{% url 'user:login' %}">
         {% csrf_token %}
         <div class="container">

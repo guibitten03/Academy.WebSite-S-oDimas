@@ -88,11 +88,6 @@ def calendarView(request, id):
 def listaOficinasView(request, id):
     user = UserStudent.objects.get(user_id=id)
     info = {'user': user}
-    return render(request, "calendario-aluno.html",info)
-
-def listaOficinasView(request, id):
-    user = UserStudent.objects.get(user_id=id)
-    info = {'user': user}
     return render(request, "tela_listar_oficina.html", info)
 
 def logoutView(request):

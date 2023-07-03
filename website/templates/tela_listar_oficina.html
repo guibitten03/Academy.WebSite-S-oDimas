@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -245,21 +246,22 @@
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
         <a href="{% url 'user:campus' user.user_id %}">
-            <img id="perfil-image" src="img/perfil.png" alt="Perfil">
+            <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
         <a href="{% url 'user:calendar' user.user_id %}">
-            <img id="calendario-image" src="img/calendario.png" alt="Calendário">
+            <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
         <a href="{% url 'user:lista-oficina' user.user_id %}">
-            <img id="oficinas-image" src="img/livro.png" alt="Minhas Oficinas">
+            <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Minhas Oficinas</span>
         </a>
     </div>
     <div class="top-bar-container">
         <div class="top-bar">
-            <a href="index.html"><img src="img/simbolo3.png" alt="Logo - Quilombo Urbano"></a>
+            <a href="{% url 'pages:home' %}"><img src="{% static 'img/simbolo3.png' %}"
+                    alt="Logo - Quilombo Urbano"></a>
         </div>
     </div>
     <div class="content-container">

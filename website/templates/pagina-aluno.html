@@ -215,15 +215,15 @@
 </head>
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
-        <a href="{% url 'user:campus' user.user_id %}" target="_blank">
+        <a href="{% url 'user:campus' user.user_id %}">
             <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
-        <a href="{% url 'user:calendar' user.user_id %}" target="_blank">
+        <a href="{% url 'user:calendar' user.user_id %}">
             <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
-        <a href="https://www.google.com" target="_blank">
+        <a href="{% url 'user:lista-oficina' user.user_id %}">
             <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Minhas Oficinas</span>
         </a>
@@ -235,7 +235,8 @@
         </div>
     </div>
     <div class="content-container">
-        <div cluser.user_id.png' %}" alt="Imagem" />
+        <div class="container" id="caixa1" style="height: 30vh;">
+            <img src="{% static 'img/profile.png' %}" alt="Imagem" />
             <span id="dynamic-text">{{ user.name }}</span>
             <span id="dynamic-codigo" style="top: 150px; font-size: 30px;">{{ user.user_id }}</span>
         </div>

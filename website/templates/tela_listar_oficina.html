@@ -244,15 +244,15 @@
 </head>
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
-        <a href="https://www.google.com" target="_blank">
+        <a href="{% url 'user:campus' user.user_id %}">
             <img id="perfil-image" src="img/perfil.png" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
-        <a href="https://www.google.com" target="_blank">
+        <a href="{% url 'user:calendar' user.user_id %}">
             <img id="calendario-image" src="img/calendario.png" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
-        <a href="https://www.google.com" target="_blank">
+        <a href="{% url 'user:lista-oficina' user.user_id %}">
             <img id="oficinas-image" src="img/livro.png" alt="Minhas Oficinas">
             <span id="oficinas-text">Minhas Oficinas</span>
         </a>

@@ -1,19 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="images/icon_quilombo_urbano.ico" type="image/x-icon">
-  <link rel="stylesheet" href="CSS/reset.css">
-  <link rel="stylesheet" href="CSS/styleIndex.css">
+  <link rel="shortcut icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'reset.css' %}">
+  <link rel="stylesheet" href="{% static 'styleIndex.css' %}">
   <title>Quilombo Urbano</title>
 </head>
 
 <body>
   <header>
     <div id="header-esquerdo">
-      <img src="img/new_simbol.png" alt="Logo Quilombo Urbano">
+      <img src="{% static 'img/logo.png' %}" alt="Logo Quilombo Urbano">
 
       <a href="#sobre-nos" target="_self" lang="pt-br">Sobre nós</a>
       <a href="#oficinas" target="_self" lang="pt-br">Oficinas</a>
@@ -30,10 +31,10 @@
     </div>
 
     <div id="header-direito">
-        <a href="#" target="_self" lang="pt-br" id="login">Login</a>
-        <input type="button" value="Registrar Aluno" onclick="window.location.href='aluno.html'">
-        <input type="button" value="Registrar Professor" onclick="window.location.href='professor.html'">
-        <img src="img/simbolo3.png" alt="Ícone de usuário">
+        <a href="{% url 'pages:login' %}" target="_self" lang="pt-br" id="login">Login</a>
+        <input type="button" value="Seja Aluno" onclick="location.href='{% url 'pages:student-sign' %}'">
+        <input type="button" value="Seja Professor" onclick="location.href='{% url 'pages:professor-sign' %}'">
+        <img src="{% static 'img/simbolo3.png' %}" alt="Ícone de usuário">
       </div>
       
 
@@ -62,7 +63,7 @@
     <section id="carrossel" class="fade-in-up">
       <!--Background vai ser um carrossel-->
       <div>
-        <img src="img/simbolo3.png" alt="Centro Cultural Quilombo Urbano">
+        <img src="{% static 'img/simbolo3.png' %}" alt="Centro Cultural Quilombo Urbano">
       </div>
     </section>
 
@@ -74,13 +75,13 @@
       </div>
 
       <div id="texto">
-        <p>O Centro Cultural Quilombo Urbano é um projeto desenvolvido pelo Movimento Negro São João del Rei em parceria com o Grupo de Pesquisa, Ensino e Extensão na área de história, cultura africana e afro-brasileira - Tugu-ná. Seu principal objetivo é revitalizar e transformar o Centro Comunitário do Bairro São Dimas, localizado nas dependências da Universidade Federal de São João del Rei, em um espaço dedicado à valorização da cultura afro-brasileira e ao fortalecimento da comunidade. </p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex eveniet recusandae fugit ipsam minima consectetur, adipisci sit ipsa ipsum aut, odit velit tenetur porro eum. Adipisci sint ab hic fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae itaque esse aliquam libero placeat Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed minus possimus reprehenderit aperiam vitae illum esse quo soluta aut natus dolorem </p>
         <div id="paragrafo2" class="paragrafo-com-imagem">
           <div id="imagem1" class="imagem-circulo"></div>
-          <p>O público-alvo do projeto é diversificado. Diretamente, o projeto visa atender aos moradores da comunidade do bairro São Dimas, que resguarda os valores de um sistema quilombola, como a autogestão, a resistência cultural e a solidariedade. Indiretamente, o projeto também busca envolver os moradores da cidade de São João del Rei, universitários residentes na região, artistas locais e pesquisadores interessados na história e cultura africana e afro-brasileira.</p>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam aspernatur debitis facilis labore. Perferendis explicabo cum quod esse, eveniet quasi nostrum, placeat ad perspiciatis tempora cumque saepe eos quae deleniti. Lorem ipsum dolor sit amet consecthil nemo sit, eligendi quidem dolor. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi soluta placeat ratione eius vitae aspernatur suscipit temporibus mollitia numquam, dolo</p>
         </div>
         <div id="paragrafo3" class="paragrafo-com-imagem">
-          <p>O Movimento Negro de São João del Rei, impulsionado pela filosofia do "ubuntu" e pela filosofia kindezi do povo bantu, que enfatiza a importância da comunidade para o desenvolvimento de cada indivíduo, busca promover a continuidade da existência e resistência do povo africano e afro-brasileiro. O projeto celebra os pactos de solidariedade e o legado cultural que remontam desde a diáspora até os dias atuais, com o intuito de criar um espaço de encontro e estudo para toda a comunidade.</p>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex eveniet recusandae fugit ipsam minima consectetur, adipisci sit ipsa ipsum aut, odit velit tenetur porro eum. Adipisci sint ab hic fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil omnis necessitatibus quod nesciunt vel ducimus esse ad rerum dolorem ut dolorum vero atque nam laboriosam d Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ratione voluptatum reprehenderit ipsa asper</p>
           <div id="imagem2" class="imagem-circulo"></div>
         </div>
       </div>
@@ -95,25 +96,25 @@
         </div>
       
         <div id="texto">
-          <p>em nosso projeto voce pode fazer parte de diversos projetos, que denominamos oficinas, onde temos oficinas que envolvem artes, desde de pintura e desenho ate plasticas, esporte de diversos tipos, e introduzir e ensinar tecnologia.</p>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex eveniet recusandae fugit ipsam minima consectetur, adipisci sit ipsa ipsum aut, odit velit tenetur porro eum. Adipisci sint ab hic fugit.</p>
       
           <div id="cards">
             <div class="card">
               <div class="imagem-oficina" id="card1"></div>
               <div class="nome-oficina">
-                <p>Arte</p>
+                <p>Nome da oficina</p>
               </div>
             </div>
             <div class="card">
               <div class="imagem-oficina" id="card2"></div>
               <div class="nome-oficina">
-                <p>esporte</p>
+                <p>Nome da oficina</p>
               </div>
             </div>
             <div class="card">
               <div class="imagem-oficina" id="card3"></div>
               <div class="nome-oficina">
-                <p>tecnologia</p>
+                <p>Nome da oficina</p>
               </div>
             </div>
           </div>
@@ -130,7 +131,7 @@
       </div>
 
       <div id="texto" >
-        <p>aqui voce insere por texto a localização do local, como nao temos usamos da UFSJ, e a foto a baixo e locaçização no mapa</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Modi culpa voluptates nam. Iusto placeat illo eveniet totam accusamus blanditiis, quod voluptate tenetur distinctio iste ut ratione laudantium cumque corrupti expedita! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat ad soluta reiciendis possimus quasi, eligendi voluptatem! Debitis eius hic molestiae nesciunt dicta iusto sit, vero consequatur fugit dolore ipsam tenetur?</p>
 
         <!--API GOOGLE-->
         <div id="mapa"></div>
@@ -149,8 +150,8 @@
 
 // Defina uma matriz com as URLs das imagens de fundo do carrossel
 var backgroundImages = [
-  "url('../img/capo.png')",
-  "url('../img/imagemPrincipal.jpg')"
+  "url({% static 'img/capo.png'%}",
+  "url({% static 'img/imagemPrincipal.jpg'%})"
 ];
 
 // Defina o intervalo de tempo para a transição das imagens (em milissegundos)

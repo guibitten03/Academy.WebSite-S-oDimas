@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="images/icon_quilombo_urbano.ico" type="image/x-icon">
+  <link rel="stylesheet" href="CSS/reset.css">
+  <link rel="stylesheet" href="CSS/styleGaleria.css">
+  <title>Galeria</title>
+</head>
+
+<body>
+  <header>
+    <div id="header-esquerdo">
+      <img src="images/quilombo_urbano_logo.png" alt="Logo Quilombo Urbano">
+
+      <a href="#pagina-inicial" target="_self" lang="pt-br">Pagina inicial</a>
+      <a href="#galeria" target="_self" lang="pt-br">Galeria</a>
+
+      <div id="container">
+        <div id="hamburger">
+          <div class="linha"></div>
+          <div class="linha"></div>
+          <div class="linha"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="header-direito">
+        <a href="#" target="_self" lang="pt-br" id="login">Login</a>
+        <input type="button" value="Registrar Aluno" onclick="window.location.href='aluno.html'">
+        <input type="button" value="Registrar Professor" onclick="window.location.href='professor.html'">
+        <img src="img/simbolo3.png" alt="Ícone de usuário">
+      </div>
+      
+
+  </header>
+
+
+  <main>
+
+    <section id="galeria" class="fade-in-up">
+      <div id="titulo">
+        <div class="linha-titulo"></div>
+        <h2>Galeria</h2>
+        <div class="linha-titulo"></div>
+      </div>
+
+      <div id="texto">
+        <p> aqui compartilhamos memorias e como nosso projeto e no dia a dia, e também momentos importantes em nossa jornada e toda nossa historia.</p>
+        <div id="paragrafo2" class="paragrafo-com-imagem">
+        </div>
+      </div>
+
+    </section>      
+
+    <section id="localizacao" class="fade-in-up">
+      <div id="titulo">
+        <div class="linha-titulo"></div>
+        <div class="linha-titulo"></div>
+      </div>
+      <div id="texto" >
+        <p>descrição sobre o que e a imagem, aqui voce conta o contexto da imagem e onde e quando foi tirada, dando contexto sobre o que ela realmente e, e mais informações</p>
+
+        <!--API GOOGLE-->
+        <div id="mapa">
+          <img src="img/dance.png" id="imagens"alt="Mapa">
+        </div>
+      </div>
+
+    </section>
+
+    <section id="localizacao" class="fade-in-up">
+      <div id="titulo">
+        <div class="linha-titulo"></div>
+        <div class="linha-titulo"></div>
+      </div>
+      <div id="texto" >
+        <p>descrição sobre o que e a imagem, aqui voce conta o contexto da imagem e onde e quando foi tirada, dando contexto sobre o que ela realmente e, e mais informações</p>
+        <!--API GOOGLE-->
+        <div id="mapa">
+          <img src="img/canto.png" id="imagens"alt="Mapa">
+        </div>
+      </div>
+
+    </section>
+    <section id="localizacao" class="fade-in-up">
+      <div id="titulo">
+        <div class="linha-titulo"></div>
+        <div class="linha-titulo"></div>
+      </div>
+      <div id="texto" >
+        <p>descrição sobre o que e a imagem, aqui voce conta o contexto da imagem e onde e quando foi tirada, dando contexto sobre o que ela realmente e, e mais informações</p>
+        <!--API GOOGLE-->
+        <div id="mapa">
+          <img src="img/sala.png" id="imagens"alt="Mapa">
+        </div>
+      </div>
+
+    </section>
+    <section id="localizacao" class="fade-in-up">
+      <div id="titulo">
+        <div class="linha-titulo"></div>
+        <div class="linha-titulo"></div>
+      </div>
+      <div id="texto" >
+        <p>descrição sobre o que e a imagem, aqui voce conta o contexto da imagem e onde e quando foi tirada, dando contexto sobre o que ela realmente e, e mais informações</p>
+        <!--API GOOGLE-->
+        <div id="mapa">
+          <img src="img/fotin.png" id="imagens"alt="Mapa">
+        </div>
+      </div>
+
+    </section>
+    <section id="localizacao" class="fade-in-up">
+      <div id="titulo">
+        <div class="linha-titulo"></div>
+        <div class="linha-titulo"></div>
+      </div>
+      <div id="texto" >
+        <p>descrição sobre o que e a imagem, aqui voce conta o contexto da imagem e onde e quando foi tirada, dando contexto sobre o que ela realmente e, e mais informações</p>
+        <!--API GOOGLE-->
+        <div id="mapa">
+          <img src="img/democracia.png" id="imagens"alt="Mapa">
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Quilombo Urbano - Movimento Negro de São João del-Rei</p>
+
+
+  </footer>
+  
+  <script>
+
+   document.addEventListener("DOMContentLoaded", function(event) {
+    var elements = document.querySelectorAll(".fade-in-up");
+
+    function fadeInUp() {
+        for (var i = 0; i < elements.length; i++) {
+        var element = elements[i];
+        var rect = element.getBoundingClientRect();
+        var isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+
+        if (isVisible) {
+            element.classList.add("fade-in");
+            element.classList.remove("fade-out");
+        } else {
+            element.classList.add("fade-out");
+            element.classList.remove("fade-in");
+        }
+        }
+    }
+
+    window.addEventListener("scroll", fadeInUp);
+    fadeInUp();
+    });
+
+    // Espera até que todo o conteúdo seja carregado, incluindo imagens e outros recursos externos
+    window.addEventListener("load", function () {
+      // Obtém a altura do cabeçalho
+      const headerHeight = document.querySelector("header").offsetHeight;
+  
+      // Obtém as referências dos botões
+      const sobreNosBtn = document.querySelector('a[href="#sobre-nos"]');
+      const oficinasBtn = document.querySelector('a[href="#oficinas"]');
+      const localizacaoBtn = document.querySelector('a[href="#localizacao"]');
+  
+      // Funções de rolagem suave para as seções correspondentes
+      sobreNosBtn.addEventListener("click", () => {
+        const sobreNosSection = document.getElementById("sobre-nos");
+        const offset = sobreNosSection.getBoundingClientRect().top;
+        window.scrollBy({ top: offset - headerHeight, behavior: "smooth" });
+      });
+  
+      oficinasBtn.addEventListener("click", () => {
+        const oficinasSection = document.getElementById("oficinas");
+        const offset = oficinasSection.getBoundingClientRect().top;
+        window.scrollBy({ top: offset - headerHeight, behavior: "smooth" });
+      });
+  
+      localizacaoBtn.addEventListener("click", () => {
+        const localizacaoSection = document.getElementById("localizacao");
+        const offset = localizacaoSection.getBoundingClientRect().top;
+        window.scrollBy({ top: offset - headerHeight, behavior: "smooth" });
+      });
+    });
+  </script>
+  
+  
+</body>
+</html>

@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --header-background-color: #141d14;
+    --header-elements-color: rgb(255, 255, 255);
+    --header-button-color: #ffa216;
+    --carousel-background-color: #F9C29A;
+    --carousel-title-background-color: rgba(255, 255, 255, 0.5);
+    --title-color: #5a6072;
+    --title-lines-color: #187201;
+    --card-color: rgb(255, 255, 255);
+    --cards-container-color: #a7c09c1e;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+
+
+    height: 8vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+
+    background-color: var(--header-background-color);
+
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    box-shadow: 5px 5px 5px rgba(0, 26, 8, 0.278);
+}
+
+header a {
+    text-decoration: none;
+    color: var(--header-elements-color);
+    margin: 0 25px;
+}
+
+#header-esquerdo #hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    
+    width: 35px;
+    height: 40px;
+    
+    margin-left: 10px;
+}
+
+#hamburger > .linha{
+    width: 35px;
+    height: 3px;
+    margin-top: 6px;
+
+    background-color: var(--header-elements-color);
+}
+
+#header-esquerdo, #header-direito {
+    display: flex;
+    align-items: center;
+}
+
+#header-esquerdo > img {
+    height: 55px;
+    margin-right: 10px;
+}
+
+#header-direito > input {
+    background-color: var(--header-button-color);
+    margin-right: 35px;
+
+    height: 35px;
+    min-width: 100px;
+    max-width: 150px;
+
+    border: none;
+    border-radius: 5px;
+}
+
+#header-direito > img {
+    display: none;
+
+    margin-right: 30px;
+}
+
+aside {
+    position: fixed;
+    top: 0;
+    right: -20rem;
+
+    transition: all 0.8s;
+}
+
+nav {
+    position: absolute;
+    
+    height: 100vh;
+    background-color: var(--header-background-color);
+    z-index: 5;
+}
+
+nav > ul {
+    list-style-type: none;
+}
+
+nav > ul > div {
+    width: 100%;
+    height: 70px;
+
+
+    padding: 20px;
+}
+
+nav li {
+    color: var(--header-elements-color);
+
+    font-size: 120%;
+
+}
+
+.show-menu #hamburger {
+    right: 16rem;
+}
+
+main > #carrossel {
+    background-color: var(--carousel-background-color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 85vh;
+    box-shadow: 10px 10px 10px rgba(0, 26, 8, 0.278);
+  
+    /* Adicionar efeito de opacidade circular */
+    position: relative;
+    overflow: hidden;
+  
+    /* Adicionar transição suave entre as imagens */
+    transition: background-image 1s ease-in-out;
+  }
+  
+  main > #carrossel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 30% 100%, transparent, rgb(15, 8, 0));
+  }
+
+main > #carrossel > div{
+    background-color: var(--carousel-title-background-color);
+
+    display: flex;
+    flex-direction: column;
+
+    width: 50%;
+
+    border-radius: 5px;
+
+    position: relative;
+    top: 100px;
+    left: 40px;
+
+}
+
+main > #carrossel img{
+    width: 100%;
+    height: 390px;
+    flex-shrink: 0;
+    height: auto;
+}
+
+#sobre-nos, #oficinas, #localizacao{
+    margin: 30px 0;
+
+    width: 100%;
+}
+
+#titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#titulo > h2 {
+    margin: 0 5%;
+    font-size: 300%;
+    color: var(--title-color);
+}
+
+.linha-titulo{
+
+    width: 30%;
+    height: 4px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    opacity: 0.1;
+    background-color: var(--title-lines-color);
+}
+
+#texto {
+    width: 93vw;
+
+    margin: 50px 5%;
+
+    font-size: 150%;
+}
+
+#sobre-nos > #texto .imagem-circulo {
+    border-radius: 50%;
+
+    background-color: var(--title-color);
+
+    width: 150px;
+    aspect-ratio: 1/1;
+    box-shadow: 3px 3px 3px rgba(2, 97, 30, 0.278);
+}
+
+#sobre-nos > #texto #imagem1 {
+    margin-right: 25px;
+}
+
+#sobre-nos > #texto #imagem2 {
+    margin-left: 25px;
+}
+
+#sobre-nos > #texto #imagem1, #sobre-nos > #texto #imagem2 {
+    flex-shrink: 0;
+}
+
+#sobre-nos > #texto > .paragrafo-com-imagem {
+    display: flex;
+    align-items: center;
+}
+
+#sobre-nos > #texto p {
+    margin: 30px 0;
+}
+
+#oficinas #cards {
+    background-color: var(--cards-container-color);
+
+    margin: 30px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 0;
+    border-radius: 2px;
+}
+
+#oficinas .card {
+    background-color: var(--card-color);
+    height: 400px;
+    width: 300px;
+    border-radius: 10px;
+
+    margin: 0 50px;
+
+    box-shadow: 3px 3px 3px rgba(2, 97, 30, 0.278);
+}
+
+#oficinas .card .imagem-oficina {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    border-radius: 10px;
+    margin: 10px;
+
+    height: 200px;
+}
+
+#oficinas .card #card1 {
+    background-image: url(../images/card-lapis.jpg);
+}
+
+#oficinas .card #card2 {
+    background-image: url(../images/card-futebol.jpg);
+}
+
+#oficinas .card #card3 {
+    background-image: url(../images/card-fotografia.jpg);
+}
+
+#oficinas .card .nome-oficina {
+    height: 180px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#localizacao > #texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#localizacao #mapa {
+    background-color: var(--title-color);
+    box-shadow: 3px 3px 3px rgba(2, 97, 30, 0.278);
+
+    width: 80%;
+    aspect-ratio: 2/1;
+
+    margin: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        justify-content: space-between;
+    }
+
+    #header-esquerdo {
+        justify-self: center;
+    }
+
+    #header-esquerdo > img {
+        margin-left: 20px;
+    }
+
+    #header-esquerdo #hamburger {
+        display: flex;
+    }
+
+    #header-direito > img {
+        display: block;
+    }
+
+    #header-esquerdo > a, #header-direito > a, #header-direito > input {
+        display: none;
+    }
+
+    main > #carrossel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    main > #carrossel > div{
+        width: 75%;
+
+        position: static;
+    }
+
+    #oficinas #cards {
+        flex-wrap: wrap;
+    }
+
+    #oficinas .card {
+        margin: 20px 20px;
+    }
+}
+
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+  
+
+@media screen and (max-width: 650px) {
+    main > #carrossel {
+        height: 40vh;
+    }
+
+    
+}

@@ -19,7 +19,7 @@
       <a href="#sobre-nos" target="_self" lang="pt-br">Sobre nós</a>
       <a href="#oficinas" target="_self" lang="pt-br">Oficinas</a>
       <a href="#localizacao" target="_self" lang="pt-br">Localização</a>
-      <a href="#galeria" target="_self" lang="pt-br">Galeria</a>
+      <a href="{% url 'pages:gallery' %}" target="_self" lang="pt-br">Galeria</a>
 
       <div id="container">
         <div id="hamburger">
@@ -31,9 +31,9 @@
     </div>
 
     <div id="header-direito">
-        <a href="#" target="_self" lang="pt-br" id="login">Login</a>
-        <input type="button" value="Registrar Aluno" onclick="window.location.href='aluno.html'">
-        <input type="button" value="Registrar Professor" onclick="window.location.href='professor.html'">
+        <a href="{% url 'pages:login' %}" target="_self" lang="pt-br" id="login">Login</a>
+        <input type="button" value="Registrar Aluno" onclick="location.href='{% url 'pages:student-sign' %}'">
+        <input type="button" value="Registrar Professor" onclick="location.href='{% url 'pages:professor-sign' %}'">
         <img src="{% static 'img/new_simbolo3.png' %}" alt="Ícone de usuário">
       </div>
       

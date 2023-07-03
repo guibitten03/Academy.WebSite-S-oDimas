@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,18 +7,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="images/icon_quilombo_urbano.ico" type="image/x-icon">
-  <link rel="stylesheet" href="CSS/reset.css">
-  <link rel="stylesheet" href="CSS/styleGaleria.css">
+  <link rel="stylesheet" href="{% static 'reset.css' %}">
+  <link rel="stylesheet" href="{% static 'styleGaleria.css' %}">
   <title>Galeria</title>
 </head>
 
 <body>
   <header>
     <div id="header-esquerdo">
-      <img src="images/quilombo_urbano_logo.png" alt="Logo Quilombo Urbano">
+      <img src="{% static 'img/new_simbol.png' %}" alt="Logo Quilombo Urbano">
 
-      <a href="#pagina-inicial" target="_self" lang="pt-br">Pagina inicial</a>
-      <a href="#galeria" target="_self" lang="pt-br">Galeria</a>
+      <a href="{% url 'pages:home' %}" target="_self" lang="pt-br">Pagina inicial</a>
+      <a href="#" target="_self" lang="pt-br">Galeria</a>
 
       <div id="container">
         <div id="hamburger">
@@ -28,11 +30,11 @@
     </div>
 
     <div id="header-direito">
-        <a href="#" target="_self" lang="pt-br" id="login">Login</a>
-        <input type="button" value="Registrar Aluno" onclick="window.location.href='aluno.html'">
-        <input type="button" value="Registrar Professor" onclick="window.location.href='professor.html'">
-        <img src="img/simbolo3.png" alt="Ícone de usuário">
-      </div>
+      <a href="{% url 'pages:login' %}" target="_self" lang="pt-br" id="login">Login</a>
+      <input type="button" value="Registrar Aluno" onclick="location.href='{% url 'pages:student-sign' %}'">
+      <input type="button" value="Registrar Professor" onclick="location.href='{% url 'pages:professor-sign' %}'">
+      <img src="{% static 'img/new_simbolo3.png' %}" alt="Ícone de usuário">
+    </div>
       
 
   </header>
@@ -65,7 +67,7 @@
 
         <!--API GOOGLE-->
         <div id="mapa">
-          <img src="img/dance.png" id="imagens"alt="Mapa">
+          <img src="{% static 'img/dance.png' %}" id="imagens" alt="Mapa">
         </div>
       </div>
 
@@ -80,7 +82,7 @@
         <p>descrição sobre o que e a imagem, aqui voce conta o contexto da imagem e onde e quando foi tirada, dando contexto sobre o que ela realmente e, e mais informações</p>
         <!--API GOOGLE-->
         <div id="mapa">
-          <img src="img/canto.png" id="imagens"alt="Mapa">
+          <img src="{% static 'img/canto.png' %}" id="imagens"alt="Mapa">
         </div>
       </div>
 
@@ -94,7 +96,7 @@
         <p>descrição sobre o que e a imagem, aqui voce conta o contexto da imagem e onde e quando foi tirada, dando contexto sobre o que ela realmente e, e mais informações</p>
         <!--API GOOGLE-->
         <div id="mapa">
-          <img src="img/sala.png" id="imagens"alt="Mapa">
+          <img src="{% static 'img/sala.png' %}" id="imagens"alt="Mapa">
         </div>
       </div>
 
@@ -108,7 +110,7 @@
         <p>descrição sobre o que e a imagem, aqui voce conta o contexto da imagem e onde e quando foi tirada, dando contexto sobre o que ela realmente e, e mais informações</p>
         <!--API GOOGLE-->
         <div id="mapa">
-          <img src="img/fotin.png" id="imagens"alt="Mapa">
+          <img src="{% static 'img/fotin.png' %}" id="imagens" alt="Mapa">
         </div>
       </div>
 
@@ -122,7 +124,7 @@
         <p>descrição sobre o que e a imagem, aqui voce conta o contexto da imagem e onde e quando foi tirada, dando contexto sobre o que ela realmente e, e mais informações</p>
         <!--API GOOGLE-->
         <div id="mapa">
-          <img src="img/democracia.png" id="imagens"alt="Mapa">
+          <img src="{% static 'img/democracia.png' %}" id="imagens" alt="Mapa">
         </div>
       </div>
 

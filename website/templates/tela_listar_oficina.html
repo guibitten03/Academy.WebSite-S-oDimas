@@ -1,9 +1,12 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+  <link rel="stylesheet" href="{% static 'styleIndex.css' %}">
     <title>Listar Oficinas</title>
     <style>
         body {
@@ -271,19 +274,19 @@
                 <div class="card">
                   <div class="imagem-oficina" id="card1"></div>
                   <div class="nome-oficina">
-                    <p>Nome da oficina</p>
+                    <p>Arte</p>
                   </div>
                 </div>
                 <div class="card">
                   <div class="imagem-oficina" id="card2"></div>
                   <div class="nome-oficina">
-                    <p>Nome da oficina</p>
+                    <p>esporte</p>
                   </div>
                 </div>
                 <div class="card">
                   <div class="imagem-oficina" id="card3"></div>
                   <div class="nome-oficina">
-                    <p>Nome da oficina</p>
+                    <p>tecnologia</p>
                   </div>
                 </div>
               </div>
@@ -291,7 +294,7 @@
         <div class="dark-overlay"></div>
     </div>
 
-    <script>
+    {% comment %} <script>
                 // Exemplo de dados obtidos do banco de dados (substitua esta parte pelos seus dados reais)
         var dadosDoBancoDeDados = [
             { nome: "Oficina 1", imagem: "caminho-da-imagem1.jpg" },
@@ -347,6 +350,6 @@
             var content = document.querySelector('.content-container');
             content.classList.remove('dark');
         }
-    </script>
+    </script> {% endcomment %}
 </body>
 </html>

@@ -16,3 +16,6 @@ def registerAlunoView(request):
 
 def loginView(request):
     return render(request,'login.html')
+
+def galleryView(request):
+    return render(request, 'galeria.html')

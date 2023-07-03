@@ -5,15 +5,16 @@
     --header-elements-color: rgb(255, 255, 255);
     --header-button-color: #ffa216;
     --carousel-background-color: #F9C29A;
-    --carousel-title-background-color: rgba(255, 255, 255, 0.11);
+    --carousel-title-background-color: rgba(255, 255, 255, 0.5);
     --title-color: #5a6072;
-    --title-lines-color: #187201;
+    --title-lines-color: #01081f;
     --card-color: rgb(255, 255, 255);
     --cards-container-color: #a7c09c1e;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: rgba(226, 235, 245, 0.904);
 }
 
 header {
@@ -125,47 +126,7 @@ nav li {
     right: 16rem;
 }
 
-main > #carrossel {
-    background-color: var(--carousel-background-color);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 85vh;
-    box-shadow: 10px 10px 10px rgba(0, 26, 8, 0.278);
-  
-    /* Adicionar efeito de opacidade circular */
-    position: relative;
-    overflow: hidden;
-  
-    /* Adicionar transição suave entre as imagens */
-    transition: background-image 1s ease-in-out;
-  }
-  
-  main > #carrossel::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: radial-gradient(circle at 30% 100%, transparent, rgb(15, 8, 0));
-  }
 
-main > #carrossel > div{
-    background-color: var(--carousel-title-background-color);
-
-    display: flex;
-    flex-direction: column;
-
-    width: 50%;
-
-    border-radius: 5px;
-
-    position: relative;
-    top: 100px;
-    left: 40px;
-
-}
 
 main > #carrossel img{
     width: 100%;
@@ -174,7 +135,7 @@ main > #carrossel img{
     height: auto;
 }
 
-#sobre-nos, #oficinas, #localizacao{
+#galeria, #localizacao{
     margin: 30px 0;
 
     width: 100%;
@@ -186,8 +147,10 @@ main > #carrossel img{
     align-items: center;
 }
 
+
 #titulo > h2 {
     margin: 0 5%;
+    margin-top: 10%;
     font-size: 300%;
     color: var(--title-color);
 }
@@ -210,7 +173,7 @@ main > #carrossel img{
     font-size: 150%;
 }
 
-#sobre-nos > #texto .imagem-circulo {
+#galeria > #texto .imagem-circulo {
     border-radius: 50%;
 
     background-color: var(--title-color);
@@ -220,88 +183,20 @@ main > #carrossel img{
     box-shadow: 3px 3px 3px rgba(2, 97, 30, 0.278);
 }
 
-#sobre-nos > #texto #imagem1 {
-    margin-right: 25px;
-    background-image: url(img/paint.jpg);
-    background-size: cover;
-    background-position: center;
-}
 
-#sobre-nos > #texto #imagem2 {
-    margin-left: 25px;
-    background-image: url(img/happy.jpg);
-    background-size: cover;
-    background-position: center;
-}
-
-#sobre-nos > #texto #imagem1, #sobre-nos > #texto #imagem2 {
+#galeria > #texto #imagem1, #sobre-nos > #texto #imagem2 {
     flex-shrink: 0;
 }
 
-#sobre-nos > #texto > .paragrafo-com-imagem {
+#galeria > #texto > .paragrafo-com-imagem {
     display: flex;
     align-items: center;
 }
 
-#sobre-nos > #texto p {
+#galeria > #texto p {
     margin: 30px 0;
 }
 
-#oficinas #cards {
-    background-color: var(--cards-container-color);
-
-    margin: 30px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 30px 0;
-    border-radius: 2px;
-}
-
-#oficinas .card {
-    background-color: var(--card-color);
-    height: 400px;
-    width: 300px;
-    border-radius: 10px;
-
-    margin: 0 50px;
-
-    box-shadow: 3px 3px 3px rgba(2, 97, 30, 0.278);
-}
-
-#oficinas .card .imagem-oficina {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    border-radius: 10px;
-    margin: 10px;
-
-    height: 200px;
-}
-
-#oficinas .card #card1 {
-    background-image: url(img/arte.jpg);
-}
-
-#oficinas .card #card2 {
-    background-image: url(img/esporte.jpg);
-}
-
-#oficinas .card #card3 {
-    background-image: url(img/tec.png);
-}
-
-#oficinas .card .nome-oficina {
-    height: 180px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 #localizacao > #texto {
     display: flex;
@@ -311,16 +206,20 @@ main > #carrossel img{
 }
 
 #localizacao #mapa {
-    background-image: url(img/mapa.png);
-    background-size: cover;
-    background-position: center;
     background-color: var(--title-color);
-    box-shadow: 3px 3px 3px rgba(2, 97, 30, 0.278);
-
+    box-shadow: 10px 10px 10px rgba(1, 17, 48, 0.278);
     width: 80%;
     aspect-ratio: 2/1;
-
+    background-size: cover;
     margin: 40px;
+}
+
+#localizacao #mapa #imagens {
+    
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+
 }
 
 @media screen and (max-width: 768px) {
@@ -348,25 +247,6 @@ main > #carrossel img{
         display: none;
     }
 
-    main > #carrossel {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    main > #carrossel > div{
-        width: 75%;
-
-        position: static;
-    }
-
-    #oficinas #cards {
-        flex-wrap: wrap;
-    }
-
-    #oficinas .card {
-        margin: 20px 20px;
-    }
 }
 
 .fade-in {

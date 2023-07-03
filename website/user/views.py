@@ -75,13 +75,18 @@ def loginView(request):
     else:
         return render(request, 'login.html')
     
-def studentView(request, user_id):
-    user = UserStudent.objects.get(user_id=user_id)
+def studentView(request, id):
+    user = UserStudent.objects.get(user_id=id)
     info = {'user': user}
     return render(request, "pagina-aluno.html",info)
 
-def calendarView(request, user_id):
-    user = UserStudent.objects.get(user_id=user_id)
+def calendarView(request, id):
+    user = UserStudent.objects.get(user_id=id)
+    info = {'user': user}
+    return render(request, "calendario-aluno.html",info)
+
+def listaOficinasView(request, id):
+    user = UserStudent.objects.get(user_id=id)
     info = {'user': user}
     return render(request, "calendario-aluno.html",info)
 

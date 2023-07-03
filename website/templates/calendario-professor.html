@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/reset.css">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
     <title>Quilombo Urbano</title>
     <style>
         html, body {
@@ -114,7 +115,6 @@
         }
 
         .top-bar img {
-
             height: 50px;
             margin: 0 20px;
         }
@@ -244,22 +244,22 @@
 </head>
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
-        <a href="{% url 'professor:campus' user.user_id %}" target="_blank">
+        <a href="{% url 'professor:campus' user.user_id %}">
             <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
-        <a href="{% url 'professor:calendar' user.user_id%}" target="_blank">
+        <a href="{% url 'professor:calendar' user.user_id%}">
             <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
-        <a href="{% url 'professor:criar-oficinas' user.user_id%}" target="_blank">
+        <a href="{% url 'professor:criar-oficinas' user.user_id%}">
             <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Criar Oficinas</span>
         </a>
     </div>
     <div class="top-bar-container">
         <div class="top-bar">
-            <a href="{% url 'pages:home' %}"><img src="{%  %}img/simbolo3.png" alt="Logo - Quilombo Urbano"></a>
+            <a href="{% url 'pages:home' %}"><img src="{% static 'img/simbolo3.png' %}" alt="Logo - Quilombo Urbano"></a>
         </div>
     </div>
 

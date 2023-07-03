@@ -80,10 +80,10 @@ def calendarView(request, id):
     info = {'user': user}
     return render(request,'calendario-professor.html', info)
 
-def criarOficinasView(request):
-    pass
-    # return render(request,'calendario.html')
-
+def criarOficinasView(request, id):
+    user = Professor.objects.get(user_id=id)
+    info = {'user': user}
+    return render(request,'criar-oficinas.html', info)
 
 def logoutView(request):
     logout(request)

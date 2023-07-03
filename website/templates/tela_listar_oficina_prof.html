@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'reset.css' %}">
-    <link rel="stylesheet" href="{% static 'styleIndex.css' %}">
     <title>Listar Oficinas</title>
     <style>
         body {
@@ -182,57 +180,57 @@
         }
 
 
-        #main-cards #cards {
-            background-color: #ffffff;
+        #oficinas #cards {
+            background-color: var(--cards-container-color);
+        
             margin: 30px 10px;
             display: flex;
             justify-content: center;
             align-items: center;
+        
             padding: 30px 0;
             border-radius: 2px;
-            flex-wrap: wrap; /* Adicione esta linha */
-}
-
-        #main-cards .card {
-            background-color: #f9faf9;
+        }
+        
+        #oficinas .card {
+            background-color: var(--card-color);
             height: 400px;
             width: 300px;
             border-radius: 10px;
-
+        
             margin: 0 50px;
-            margin-top: 20px;
-
+        
             box-shadow: 3px 3px 3px rgba(2, 97, 30, 0.278);
         }
-
-        #main-cards .card .imagem-oficina {
+        
+        #oficinas .card .imagem-oficina {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-
+        
             border-radius: 10px;
             margin: 10px;
-
+        
             height: 200px;
         }
-
+        
         #oficinas .card #card1 {
-            background-image: url(../images/card-lapis.jpg);
+            background-image: url({% static 'img/arte.jpg' %});
         }
-
+        
         #oficinas .card #card2 {
-            background-image: url(../images/card-futebol.jpg);
+            background-image: url({% static 'img/esporte.jpg' %});
         }
-
+        
         #oficinas .card #card3 {
-            background-image: url(../images/card-fotografia.jpg);
+            background-image: url({% static 'img/tec.png' %});
         }
-
+        
         #oficinas .card .nome-oficina {
             height: 180px;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
-
+        
             display: flex;
             justify-content: center;
             align-items: center;
@@ -247,17 +245,25 @@
 </head>
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
-        <a href="{% url 'user:campus' user.user_id %}">
+        <a href="{% url 'professor:campus' user.user_id %}">
             <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
-        <a href="{% url 'user:calendar' user.user_id %}">
+        <a href="{% url 'professor:calendar' user.user_id%}">
             <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
-        <a href="{% url 'user:lista-oficina' user.user_id %}">
+        <a href="{% url 'professor:criar-oficinas' user.user_id%}">
+            <img id="oficinas-image" src="{% static 'img/pen.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Criar Oficinas</span>
+        </a>
+        <a href="{% url 'professor:lista-oficina' user.user_id %}">
             <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Minhas Oficinas</span>
+        </a>
+        <a href="{% url 'professor:logout' %}">
+            <img id="oficinas-image" src="{% static 'img/logout.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Sair</span>
         </a>
     </div>
     <div class="top-bar-container">
@@ -269,26 +275,28 @@
     <div class="content-container">
         <!--<div class="container" style="height: 30vh;"></div>-->
         <div class="container" id="main-cards" style="height: auto;">
+            <div id="oficinas">
             <div id="cards">
                 <div class="card">
                   <div class="imagem-oficina" id="card1"></div>
                   <div class="nome-oficina">
-                    <p>Arte</p>
+                    <h3>Arte</h3>
                   </div>
                 </div>
                 <div class="card">
                   <div class="imagem-oficina" id="card2"></div>
                   <div class="nome-oficina">
-                    <p>esporte</p>
+                    <h3>Esporte</h3>
                   </div>
                 </div>
                 <div class="card">
                   <div class="imagem-oficina" id="card3"></div>
                   <div class="nome-oficina">
-                    <p>tecnologia</p>
+                    <h3>Tecnologia</h3>
                   </div>
                 </div>
               </div>
+            </div>
         </div>
         <div class="dark-overlay"></div>
     </div>

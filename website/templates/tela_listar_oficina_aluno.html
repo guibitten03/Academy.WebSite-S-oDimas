@@ -1,9 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-br">
 <head>
-    <title>Usuário</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
+    <link rel="stylesheet" href="{% static 'styleIndex.css' %}">
+    <title>Listar Oficinas</title>
     <style>
         body {
             margin: 0;
@@ -11,6 +14,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            font-family: "Roboto", sans-serif;
         }
 
         .sidebar {
@@ -33,17 +37,16 @@
         }
 
         .sidebar img {
-            width: 50px;
+            width: 40px;
             aspect-ratio: 1/1;
             margin: 20px 10px;
-
         }
 
         .sidebar a {
             text-decoration: none;
             color: white;
             font-size: 20px;
-            font-family: "Roboto", sans-serif;
+            
             display: flex;
             align-items: center;
             margin-left: 10px;
@@ -84,25 +87,17 @@
             transition: background-color 0.5s;
         }
 
-        .sidebar:hover+.content,
-        .sidebar:hover+.content .top-bar,
-        .sidebar:hover+.content .container,
-        .sidebar:hover+.content .sub-container {
+        .sidebar:hover + .content,
+        .sidebar:hover + .content .top-bar,
+        .sidebar:hover + .content .container,
+        .sidebar:hover + .content .sub-container {
             background-color: rgba(0, 0, 0, 0.8);
         }
 
         h1 {
             text-align: center;
         }
-        
-        .container img {
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-        }
+
         .top-bar {
             height: 5vh;
             background-color: #2F2F37;
@@ -111,17 +106,17 @@
             align-items: center;
             color: white;
             font-size: 20px;
-            font-family: "Roboto", sans-serif;
+            
             margin: 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.5s;
         }
 
-        /* .top-bar a {
-            text-decoration: none;
-            color: white;
-            margin: 0 2em;
-        } */
+        .top-bar img {
+
+            height: 50px;
+            margin: 0 20px;
+        }
 
         .container {
             background-color: white;
@@ -130,26 +125,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            /* Adicionado sombra */
-            position: relative;
-            /* Adicionado para posicionar a imagem */
-        }
-
-
-        .top-bar img {
-
-            height: 50px;
-            margin: 0 20px;
-        }
-
-        #caixa1 span {
-            font-family: "Roboto", sans-serif;
-            font-size: 42px;
-            position: absolute;
-            top: 50px;
-            left: 280px;
-            color: #333;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adicionado sombra */
         }
 
         .sub-container {
@@ -174,18 +150,6 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.5s;
         }
-
-        #nome-pagina-container {
-            height: 7vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #nome-pagina-container>span {
-            font-size: 150%;
-        }
-
 
         /* Ajuste no espaçamento do conteúdo abaixo da barra do topo */
         .content-container {
@@ -217,55 +181,89 @@
             opacity: 0.8;
         }
 
-        .container {
+
+        #oficinas #cards {
+            background-color: var(--cards-container-color);
+        
+            margin: 30px 10px;
             display: flex;
             justify-content: center;
+            align-items: center;
+        
+            padding: 30px 0;
+            border-radius: 2px;
         }
-
-        .textos,
-        .titulos {
+        
+        #oficinas .card {
+            background-color: var(--card-color);
+            height: 400px;
+            width: 300px;
+            border-radius: 10px;
+        
+            margin: 0 50px;
+        
+            box-shadow: 3px 3px 3px rgba(2, 97, 30, 0.278);
+        }
+        
+        #oficinas .card .imagem-oficina {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        
+            border-radius: 10px;
+            margin: 10px;
+        
+            height: 200px;
+        }
+        
+        #oficinas .card #card1 {
+            background-image: url({% static 'img/arte.jpg' %});
+        }
+        
+        #oficinas .card #card2 {
+            background-image: url({% static 'img/esporte.jpg' %});
+        }
+        
+        #oficinas .card #card3 {
+            background-image: url({% static 'img/tec.png' %});
+        }
+        
+        #oficinas .card .nome-oficina {
+            height: 180px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        
             display: flex;
-            flex-wrap: wrap;
-            flex-direction: column;
-            align-items: start;
+            justify-content: center;
+            align-items: center;
         }
 
-        .textos span,
-        .titulos span {
-            box-sizing: border-box;
-            padding: 10px;
-            /* Add spacing around the texts */
-            font-size: 30px;
-            font-family: "Roboto", sans-serif;
+        @media screen and (max-width: 1000px){
+            #table-oficinas th,  #table-oficinas td {
+                padding: 20px 5px;
+            }
         }
     </style>
 </head>
-
 <body>
-    {% if messages %}
-        {% for message in messages %}
-        <script>alert('{{ message }}')</script>
-        {% endfor %}
-
-    {% endif %}
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
-        <a href="{% url 'professor:campus' user.user_id %}">
+        <a href="{% url 'user:campus' user.user_id %}">
             <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
-        <a href="{% url 'professor:calendar' user.user_id%}">
+        <a href="{% url 'user:calendar' user.user_id %}">
             <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
-        <a href="{% url 'professor:criar-oficinas' user.user_id%}">
-            <img id="oficinas-image" src="{% static 'img/pen.png' %}" alt="Minhas Oficinas">
-            <span id="oficinas-text">Criar Oficinas</span>
-        </a>
-        <a href="{% url 'professor:lista-oficina' user.user_id %}">
+        <a href="{% url 'user:lista-oficina' user.user_id %}">
             <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Minhas Oficinas</span>
         </a>
-        <a href="{% url 'professor:logout' %}">
+        <a href="{% url 'user:inscrever-oficina' user.user_id %}">
+            <img id="oficinas-image" src="{% static 'img/pen.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Inscrever em Oficinas</span>
+        </a>
+        <a href="{% url 'user:logout' %}">
             <img id="oficinas-image" src="{% static 'img/logout.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Sair</span>
         </a>
@@ -274,31 +272,79 @@
         <div class="top-bar">
             <a href="{% url 'pages:home' %}"><img src="{% static 'img/simbolo3.png' %}"
                     alt="Logo - Quilombo Urbano"></a>
-            
         </div>
     </div>
     <div class="content-container">
-        <div class="container" id="caixa1" style="height: 30vh;">
-            <img src="{% static 'img/profile.png' %}" alt="Imagem" />
-            <span id="dynamic-text">{{ user.name }}</span>
-            <span id="dynamic-codigo" style="top: 150px; font-size: 30px;">{{ user.user_id }}</span>
-        </div>
-        <div class="container" id="caixa2" style="height: 50vh; align-items: start;;">
-            <div class="titulos">
-                <span id="titulo-email">Email_________: {{user.email}}</span>
-                <span id="titulo-cpf">Cpf___________: {{user.cpf}}</span>
-                <span id="titulo-endereco">Endereco_____: {{user.address}}</span>
-                <span id="titulo-telefone">Telefone______: {{user.phone_number}}</span>
-                <span id="titulo-genero">Genero_______: {{user.gender}}</span>
-                <span id="titulo-nascimento">Nascimento__: {{time}}</span>
-                <span id="titulo-responsavel">Especialidade: {{user.speciality}}</span>
+        <!--<div class="container" style="height: 30vh;"></div>-->
+        <div id="oficinas">
+            <div id="cards">
+                <div class="card">
+                  <div class="imagem-oficina" id="card1"></div>
+                    <div class="nome-oficina">
+                        <h3>Arte</h3>
+                    </div>
+                </div>
+                <div class="card">
+                  <div class="imagem-oficina" id="card2"></div>
+                    <div class="nome-oficina">
+                        <h3>Esporte</h3>
+                    </div>
+                </div>
+                <div class="card">
+                  <div class="imagem-oficina" id="card3"></div>
+                    <div class="nome-oficina">
+                        <h3>Tecnologia</h3>
+                    </div>
+                </div>
+              </div>
             </div>
         </div>
-    </div>
-    <div class="dark-overlay"></div>
+        <div class="dark-overlay"></div>
     </div>
 
-    <script>
+    {% comment %} <script>
+                // Exemplo de dados obtidos do banco de dados (substitua esta parte pelos seus dados reais)
+        var dadosDoBancoDeDados = [
+            { nome: "Oficina 1", imagem: "caminho-da-imagem1.jpg" },
+            { nome: "Oficina 2", imagem: "caminho-da-imagem2.jpg" },
+            { nome: "Oficina 3", imagem: "caminho-da-imagem3.jpg" },
+            { nome: "Oficina 4", imagem: "caminho-da-imagem3.jpg" },
+            { nome: "Oficina 5", imagem: "caminho-da-imagem3.jpg" },
+            { nome: "Oficina 6", imagem: "caminho-da-imagem3.jpg" },
+            { nome: "Oficina 7", imagem: "caminho-da-imagem3.jpg" },
+            { nome: "Oficina 8", imagem: "caminho-da-imagem3.jpg" },
+            // Adicione mais dados aqui, se necessário
+        ];
+
+        // Função para criar um novo card e adicionar à lista existente
+        function adicionarNovoCard(nomeOficina, imagemOficina) {
+            var cardsContainer = document.getElementById("cards");
+
+            var novoCard = document.createElement("div");
+            novoCard.className = "card";
+
+            var imagemDiv = document.createElement("div");
+            imagemDiv.className = "imagem-oficina";
+            imagemDiv.style.backgroundImage = "url(" + imagemOficina + ")";
+
+            var nomeDiv = document.createElement("div");
+            nomeDiv.className = "nome-oficina";
+            var nomeParagrafo = document.createElement("p");
+            nomeParagrafo.textContent = nomeOficina;
+            nomeDiv.appendChild(nomeParagrafo);
+
+            novoCard.appendChild(imagemDiv);
+            novoCard.appendChild(nomeDiv);
+
+            cardsContainer.appendChild(novoCard);
+        }
+
+        // Loop para adicionar os dados do banco de dados como novos cards
+        for (var i = 0; i < dadosDoBancoDeDados.length; i++) {
+            var oficina = dadosDoBancoDeDados[i];
+            adicionarNovoCard(oficina.nome, oficina.imagem);
+        }
+
         function expandSidebar() {
             var sidebar = document.querySelector('.sidebar');
             sidebar.style.width = '15%';
@@ -312,10 +358,6 @@
             var content = document.querySelector('.content-container');
             content.classList.remove('dark');
         }
-
-
-
-    </script>
+    </script> {% endcomment %}
 </body>
-
 </html>

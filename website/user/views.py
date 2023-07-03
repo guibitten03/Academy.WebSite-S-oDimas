@@ -78,6 +78,8 @@ def loginView(request):
 def studentView(request, id):
     user = UserStudent.objects.get(user_id=id)
     info = {'user': user}
+    timing = user.birth_date.strftime("%d-%m-%Y")
+    info['time'] = timing
     return render(request, "pagina-aluno.html",info)
 
 def calendarView(request, id):
@@ -88,9 +90,14 @@ def calendarView(request, id):
 def listaOficinasView(request, id):
     user = UserStudent.objects.get(user_id=id)
     info = {'user': user}
-    return render(request, "tela_listar_oficina.html", info)
+    return render(request, "tela_listar_oficina_aluno.html", info)
+
+def inscreverOficinas(request, id):
+    user = UserStudent.objects.get(user_id=id)
+    info = {'user': user}
+    return render(request, "tela_inscrever_em_oficina.html", info)
 
 def logoutView(request):
     logout(request)
     messages.success(request, 'You have successfully logged out.')
-    return redirect('user:login')
+    return redirect('pages:home')

@@ -12,6 +12,12 @@
 </head>
 
 <body>
+  {% if messages %}
+        {% for message in messages %}
+        <script>alert('{{ message }}')</script>
+        {% endfor %}
+
+    {% endif %}
   <header>
     <div id="header-esquerdo">
       <img src="{% static 'img/new_simbol.png' %}" alt="Logo Quilombo Urbano">

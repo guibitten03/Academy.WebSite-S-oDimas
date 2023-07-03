@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -243,17 +245,25 @@
 </head>
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
-        <a href="https://www.google.com" target="_blank">
-            <img id="perfil-image" src="img/perfil.png" alt="Perfil">
+        <a href="{% url 'professor:campus' user.user_id %}">
+            <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
-        <a href="https://www.google.com" target="_blank">
-            <img id="calendario-image" src="img/calendario.png" alt="Calendário">
+        <a href="{% url 'professor:calendar' user.user_id%}">
+            <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
-        <a href="https://www.google.com" target="_blank">
-            <img id="oficinas-image" src="img/livro.png" alt="Minhas Oficinas">
+        <a href="{% url 'professor:criar-oficinas' user.user_id%}">
+            <img id="oficinas-image" src="{% static 'img/pen.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Criar Oficinas</span>
+        </a>
+        <a href="{% url 'professor:lista-oficina' user.user_id %}">
+            <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Minhas Oficinas</span>
+        </a>
+        <a href="{% url 'professor:logout' %}">
+            <img id="oficinas-image" src="{% static 'img/logout.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Sair</span>
         </a>
     </div>
     <div class="top-bar-container">

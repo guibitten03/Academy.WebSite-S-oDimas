@@ -17,6 +17,8 @@ from django.views.generic.list import ListView, MultipleObjectMixin
 
 from .models import Professor
 
+from datetime import datetime
+
 # Create your views here.
 
 def registerView(request):
@@ -73,6 +75,8 @@ def loginView(request):
 def professorView(request, id):
     user = Professor.objects.get(user_id=id)
     info = {'user': user}
+    timing = user.birth_date.strftime("%d-%m-%Y")
+    info['time'] = timing
     return render(request,'pagina-professor.html', info)
 
 def calendarView(request, id):
@@ -85,7 +89,12 @@ def criarOficinasView(request, id):
     info = {'user': user}
     return render(request,'criar-oficinas.html', info)
 
+def listaOficinasView(request, id):
+    user = Professor.objects.get(user_id=id)
+    info = {'user': user}
+    return render(request, "tela_listar_oficina_prof.html", info)
+
 def logoutView(request):
     logout(request)
     messages.success(request, 'You have successfully logged out.')
-    return redirect('professor:login')
+    return redirect('pages:home')

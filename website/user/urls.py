@@ -11,4 +11,5 @@ urlpatterns = [
     path('<int:id>/campus/', views.studentView, name='campus'),
     path('<int:id>/calendario/', views.calendarView, name='calendar'),
     path('<int:id>/minhas-oficinas/', views.listaOficinasView, name='lista-oficina'),
+    path('<int:id>/inscrever-oficina/', views.inscreverOficinas, name='inscrever-oficina')
 ]

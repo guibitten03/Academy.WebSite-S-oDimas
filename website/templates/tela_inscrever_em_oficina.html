@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -237,22 +239,30 @@
 </head>
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
-        <a href="https://www.google.com" target="_blank">
-            <img id="perfil-image" src="img/perfil.png" alt="Perfil">
+        <a href="{% url 'user:campus' user.user_id %}">
+            <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
-        <a href="https://www.google.com" target="_blank">
-            <img id="calendario-image" src="img/calendario.png" alt="Calendário">
+        <a href="{% url 'user:calendar' user.user_id %}">
+            <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
-        <a href="https://www.google.com" target="_blank">
-            <img id="oficinas-image" src="img/livro.png" alt="Minhas Oficinas">
+        <a href="{% url 'user:lista-oficina' user.user_id %}">
+            <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Minhas Oficinas</span>
+        </a>
+        <a href="{% url 'user:inscrever-oficina' user.user_id %}">
+            <img id="oficinas-image" src="{% static 'img/pen.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Inscrever em Oficinas</span>
+        </a>
+        <a href="{% url 'user:logout' %}">
+            <img id="oficinas-image" src="{% static 'img/logout.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Sair</span>
         </a>
     </div>
     <div class="top-bar-container">
         <div class="top-bar">
-            <a href="index.html"><img src="img/simbolo3.png" alt="Logo - Quilombo Urbano"></a>
+            <a href="index.html"><img src="{% static 'img/simbolo3.png' %}" alt="Logo - Quilombo Urbano"></a>
         </div>
     </div>
     <div class="content-container">
@@ -270,19 +280,19 @@
                     <th>Filtrar por:</th>
                     <th>
                         <div>
-                            <img src="img/search.png" alt="Ícone de lupa">
+                            <img src="{% static 'img/search.png' %}" alt="Ícone de lupa">
                             <input type="text" name="filtro-nome" id="filtro-nome">
                         </div>
                     </th>
                     <th>
                         <div>
-                            <img src="img/search.png" alt="Ícone de lupa">
+                            <img src="{% static 'img/search.png' %}" alt="Ícone de lupa">
                             <input type="text" name="filtro-tipo" id="filtro-tipo">
                         </div>
                     </th>
                     <th>
                         <div>
-                            <img src="img/search.png" alt="Ícone de lupa">
+                            <img src="{% static 'img/search.png' %}" alt="Ícone de lupa">
                             <input type="text" name="filtro-desc" id="filtro-desc">
                         </div>
                     </th>
@@ -292,23 +302,23 @@
 
                 <tr>
                     <td><input type="checkbox" name="checkbox-01" id="checkbox-01" class="checkbox-input"></td>
-                    <td>Nome</td>
-                    <td>Tipo</td>
-                    <td>Descrição</td>
+                    <td>Artes</td>
+                    <td>Oficina de criatividade</td>
+                    <td>Oficina para incentivar o processo criativo dos alunos.</td>
                 </tr>
 
                 <tr>
                     <td><input type="checkbox" name="checkbox-02" id="checkbox-02" class="checkbox-input"></td>
-                    <td>Nome</td>
-                    <td>Tipo</td>
-                    <td>Descrição</td>
+                    <td>Dança</td>
+                    <td>Oficina de Criatividade</td>
+                    <td>Oficina para incentivar o processo criativo dos alunos.</td>
                 </tr>
 
                 <tr>
                     <td><input type="checkbox" name="checkbox-03" id="checkbox-03" class="checkbox-input"></td>
-                    <td>Nome</td>
-                    <td>Tipo</td>
-                    <td>Descrição</td>
+                    <td>Tecnologia</td>
+                    <td>Oficina de Inovação</td>
+                    <td>Oficina para incentivar o processo de inovação dos alunos.</td>
                 </tr>
             </table>
 

@@ -224,6 +224,12 @@
 </head>
 
 <body>
+    {% if messages %}
+        {% for message in messages %}
+        <script>alert('{{ message }}')</script>
+        {% endfor %}
+
+    {% endif %}
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
         <a href="{% url 'user:campus' user.user_id %}">
             <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
@@ -236,6 +242,14 @@
         <a href="{% url 'user:lista-oficina' user.user_id %}">
             <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Minhas Oficinas</span>
+        </a>
+        <a href="{% url 'user:inscrever-oficina' user.user_id %}">
+            <img id="oficinas-image" src="{% static 'img/pen.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Inscrever em Oficinas</span>
+        </a>
+        <a href="{% url 'user:logout' %}">
+            <img id="oficinas-image" src="{% static 'img/logout.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Sair</span>
         </a>
     </div>
     <div class="top-bar-container">
@@ -252,13 +266,13 @@
         </div>
         <div class="container" id="caixa2" style="height: 50vh; align-items: start;;">
             <div class="titulos">
-                <span id="titulo-email">Email_______: {{user.email}}</span>
-                <span id="titulo-cpf">CPF_________: {{user.cpf}}</span>
-                <span id="titulo-endereco">Endereco____: {{user.address}}</span>
-                <span id="titulo-telefone">Telefone____: {{user.phone_number}}</span>
-                <span id="titulo-genero">Genero______: {{user.gender}}</span>
-                <span id="titulo-nascimento">Nascimento__: {{user.birth_date}}</span>
-                <span id="titulo-responsavel">Responsavel_: {{user.responsavel}}</span>
+                <span id="titulo-email">Email_________: {{user.email}}</span>
+                <span id="titulo-cpf">Cpf___________: {{user.cpf}}</span>
+                <span id="titulo-endereco">Endereco_____: {{user.address}}</span>
+                <span id="titulo-telefone">Telefone______: {{user.phone_number}}</span>
+                <span id="titulo-genero">Genero_______: {{user.gender}}</span>
+                <span id="titulo-nascimento">Nascimento__: {{time}}</span>
+                <span id="titulo-responsavel">Responsável: {{user.responsavel}}</span>
             </div>
         </div>
     </div>

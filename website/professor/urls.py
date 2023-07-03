@@ -10,5 +10,6 @@ urlpatterns = [
     path('<int:id>/campus/', views.professorView, name='campus'),
     path('<int:id>/calendario/', views.calendarView, name='calendar'),
     path('<int:id>/criar-oficinas/', views.criarOficinasView, name='criar-oficinas'),
+    path('<int:id>/minhas-oficinas/', views.listaOficinasView, name='lista-oficina'),
     path('logout/', views.logoutView, name='logout'),
 ]

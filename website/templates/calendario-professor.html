@@ -253,8 +253,16 @@
             <span id="calendario-text">Calendário</span>
         </a>
         <a href="{% url 'professor:criar-oficinas' user.user_id%}">
-            <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
+            <img id="oficinas-image" src="{% static 'img/pen.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Criar Oficinas</span>
+        </a>
+        <a href="{% url 'professor:lista-oficina' user.user_id %}">
+            <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Minhas Oficinas</span>
+        </a>
+        <a href="{% url 'professor:logout' %}">
+            <img id="oficinas-image" src="{% static 'img/logout.png' %}" alt="Minhas Oficinas">
+            <span id="oficinas-text">Sair</span>
         </a>
     </div>
     <div class="top-bar-container">

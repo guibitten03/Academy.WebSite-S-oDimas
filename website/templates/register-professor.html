@@ -8,11 +8,10 @@
 </head>
 <body>
     {% if messages %}
-    <ul class="messages">
         {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><script>alert('{{ message }}')</script></li>
+        <script>alert('{{ message }}')</script>
         {% endfor %}
-    </ul>
+
     {% endif %}
     <form method='POST' action="{% url 'professor:register' %}">
         {% csrf_token %}

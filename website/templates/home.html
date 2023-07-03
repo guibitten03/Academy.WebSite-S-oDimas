@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,15 +6,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="images/icon_quilombo_urbano.ico" type="image/x-icon">
-  <link rel="stylesheet" href="CSS/reset.css">
-  <link rel="stylesheet" href="CSS/styleIndex.css">
+  <link rel="stylesheet" href="{% static 'reset.css' %}">
+  <link rel="stylesheet" href="{% static 'styleIndex.css' %}">
   <title>Quilombo Urbano</title>
 </head>
 
 <body>
   <header>
     <div id="header-esquerdo">
-      <img src="img/new_simbol.png" alt="Logo Quilombo Urbano">
+      <img src="{% static 'img/new_simbol.png' %}" alt="Logo Quilombo Urbano">
 
       <a href="#sobre-nos" target="_self" lang="pt-br">Sobre nós</a>
       <a href="#oficinas" target="_self" lang="pt-br">Oficinas</a>
@@ -33,7 +34,7 @@
         <a href="#" target="_self" lang="pt-br" id="login">Login</a>
         <input type="button" value="Registrar Aluno" onclick="window.location.href='aluno.html'">
         <input type="button" value="Registrar Professor" onclick="window.location.href='professor.html'">
-        <img src="img/simbolo3.png" alt="Ícone de usuário">
+        <img src="{% static 'img/new_simbolo3.png' %}" alt="Ícone de usuário">
       </div>
       
 
@@ -62,7 +63,7 @@
     <section id="carrossel" class="fade-in-up">
       <!--Background vai ser um carrossel-->
       <div>
-        <img src="img/simbolo3.png" alt="Centro Cultural Quilombo Urbano">
+        <img src="{% static 'img/simbolo3.png' %}" alt="Centro Cultural Quilombo Urbano">
       </div>
     </section>
 
@@ -149,8 +150,8 @@
 
 // Defina uma matriz com as URLs das imagens de fundo do carrossel
 var backgroundImages = [
-  "url('../img/capo.png')",
-  "url('../img/imagemPrincipal.jpg')"
+  "url({% static 'img/capo.png' %})",
+  "url({% static 'img/imagemPrincipal.jpg' %})"
 ];
 
 // Defina o intervalo de tempo para a transição das imagens (em milissegundos)

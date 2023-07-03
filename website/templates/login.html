@@ -69,7 +69,7 @@
 <body>
     {% if messages %}
         {% for message in messages %}
-        {% if message.tags %} class="{{ message.tags }}"{% endif %}<script>alert('{{ message }}')</script>
+        <script>alert('{{ message }}')</script>
         {% endfor %}
 
     {% endif %}

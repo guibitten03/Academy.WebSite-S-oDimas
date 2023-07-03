@@ -29,7 +29,7 @@ def registerView(request):
             'phone_number': request.POST['phone_number'],
             'especiality': request.POST['especiality'],
             'email': request.POST['email'],
-            'address': request.PORT['address'],
+            'address': request.POST['address'],
             'birth_date': request.POST['birth_date'],
             'username': request.POST['username'],
             'password': request.POST['password'],
@@ -70,8 +70,20 @@ def loginView(request):
     else:
         return render(request, 'login.html')
     
-def professorView(request):
-    return render(request,'professor_perfil.html')
+def professorView(request, user_id):
+    user = Professor.objects.get(user_id=user_id)
+    info = {'user': user}
+    return render(request,'professor_perfil.html', info)
+
+def calendarView(request, user_id):
+    user = Professor.objects.get(user_id=user_id)
+    info = {'user': user}
+    return render(request,'calendario.html', info)
+
+def criarOficinasView(request):
+    pass
+    # return render(request,'calendario.html')
+
 
 def logoutView(request):
     logout(request)

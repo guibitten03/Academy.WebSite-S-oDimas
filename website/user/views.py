@@ -14,6 +14,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView, MultipleObjectMixin
 
 from .models import UserStudent
+from professor.models import Professor
 
 # Create your views here.
 
@@ -60,12 +61,16 @@ def loginView(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Login successful! Welcome, ' + username)
-            user_id = User.objects.get(username=username).id
-            print(user_id)
-            user = UserStudent.objects.get(user_id=user_id)
-            info = {'user': user}
-            return render(request, "pagina-aluno.html",info)
-        
+            user = User.objects.get(username=username)
+            print(user)
+            user_st = UserStudent.objects.filter(user=user)
+            if(len(user_st) < 1):
+                user = Professor.objects.filter(user=user)
+                info = {'user' : user[0]}
+                return render(request, "pagina-professor.html",info)
+            else:
+                info = {'user': user_st[0]}
+                return render(request, "pagina-aluno.html",info)
         else:
             messages.error(request, 'Check your information and try again!')
             return redirect('user:login')

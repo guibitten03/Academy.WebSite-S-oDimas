@@ -65,9 +65,7 @@ def loginView(request):
             print(user)
             user_st = UserStudent.objects.filter(user=user)
             if(len(user_st) < 1):
-                user = Professor.objects.filter(user=user)
-                info = {'user' : user[0]}
-                return render(request, "pagina-professor.html",info)
+                return redirect(f"professor:campus", user.id)
             else:
                 info = {'user': user_st[0]}
                 return render(request, "pagina-aluno.html",info)
@@ -82,11 +80,10 @@ def studentView(request, user_id):
     info = {'user': user}
     return render(request, "pagina-aluno.html",info)
 
-def campusView(request):
-    return render(request,'pagina-aluno.html')
-
-def calendarView(request):
-    return render(request,'calendario.html')
+def calendarView(request, user_id):
+    user = UserStudent.objects.get(user_id=user_id)
+    info = {'user': user}
+    return render(request, "calendario-aluno.html",info)
 
 def logoutView(request):
     logout(request)

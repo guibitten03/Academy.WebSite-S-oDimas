@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/reset.css">
-    <title>Quilombo Urbano</title>
+    <title>Listar Oficinas</title>
     <style>
-        html, body {
-            margin: 0;
-            overflow-x: hidden;
-        }
-
         body {
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -152,17 +148,6 @@
             transition: background-color 0.5s;
         }
 
-        #nome-pagina-container {
-            height: 7vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #nome-pagina-container > span{
-            font-size: 150%;
-        }
-
         /* Ajuste no espaçamento do conteúdo abaixo da barra do topo */
         .content-container {
             flex-grow: 1;
@@ -170,8 +155,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100vw;
-
+            margin-left: 5%;
+            margin-top: 5vh;
             transition: background-color 0.5s;
         }
 
@@ -193,115 +178,160 @@
             opacity: 0.8;
         }
 
-        .container {
+
+        #main-cards #cards {
+            background-color: #ffffff;
+            margin: 30px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 0;
+            border-radius: 2px;
+            flex-wrap: wrap; /* Adicione esta linha */
+}
+
+        #main-cards .card {
+            background-color: #f9faf9;
+            height: 400px;
+            width: 300px;
+            border-radius: 10px;
+
+            margin: 0 50px;
+            margin-top: 20px;
+
+            box-shadow: 3px 3px 3px rgba(2, 97, 30, 0.278);
+        }
+
+        #main-cards .card .imagem-oficina {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            border-radius: 10px;
+            margin: 10px;
+
+            height: 200px;
+        }
+
+        #oficinas .card #card1 {
+            background-image: url(../images/card-lapis.jpg);
+        }
+
+        #oficinas .card #card2 {
+            background-image: url(../images/card-futebol.jpg);
+        }
+
+        #oficinas .card #card3 {
+            background-image: url(../images/card-fotografia.jpg);
+        }
+
+        #oficinas .card .nome-oficina {
+            height: 180px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        table {
-            margin: 20px
+        @media screen and (max-width: 1000px){
+            #table-oficinas th,  #table-oficinas td {
+                padding: 20px 5px;
+            }
         }
-
-        table tr:nth-child(1) th {
-            background-color: #FD8920;
-            font-size: 120%;
-            font-weight: bold;
-            color: white;
-        }
-
-        table, td, th {
-            border-collapse: collapse;
-            border: 2px solid black;
-        }
-
-        th, td {
-            width: 11vw;
-        }
-
-        td {
-            height: 10vh;
-        }
-
-        th {
-            padding: 10px;
-            height: 5vh;
-            background-color: rgb(234, 234, 234);
-        }
-
-        .espaco-dia{
-            width: 100%;
-        }
-
-        table .eventos .evento {
-            display: block;
-            margin: 10px;
-        }
-
-
-
     </style>
 </head>
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
-        <a href="{% url 'professor:campus' user.user_id %}" target="_blank">
-            <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
+        <a href="https://www.google.com" target="_blank">
+            <img id="perfil-image" src="img/perfil.png" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
-        <a href="{% url 'professor:calendar' user.user_id%}" target="_blank">
-            <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
+        <a href="https://www.google.com" target="_blank">
+            <img id="calendario-image" src="img/calendario.png" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
-        <a href="{% url 'professor:criar-oficinas' user.user_id%}" target="_blank">
-            <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
-            <span id="oficinas-text">Criar Oficinas</span>
+        <a href="https://www.google.com" target="_blank">
+            <img id="oficinas-image" src="img/livro.png" alt="Minhas Oficinas">
+            <span id="oficinas-text">Minhas Oficinas</span>
         </a>
     </div>
     <div class="top-bar-container">
         <div class="top-bar">
-            <a href="{% url 'pages:home' %}"><img src="{%  %}img/simbolo3.png" alt="Logo - Quilombo Urbano"></a>
+            <a href="index.html"><img src="img/simbolo3.png" alt="Logo - Quilombo Urbano"></a>
         </div>
     </div>
-
-    <div id="nome-pagina-container">
-        <span id="nome">Calendário</span>
-    </div>
-
     <div class="content-container">
         <!--<div class="container" style="height: 30vh;"></div>-->
-        <div class="container">
-            <div id="calendario">
-                <table id="calendario-table">
-                    <tr>
-                        <th colspan="7">Dia do mês</th>
-                    </tr>
-                    <tr id="dias-semana">
-                        <th>Segunda-feira</th>
-                        <th>Terça-feira</th>
-                        <th>Quarta-feira</th>
-                        <th>Quinta-feira</th>
-                        <th>Sexta-feira</th>
-                        <th>Sábado</th>
-                        <th>Domingo</th>
-                    </tr>
-                    <!--<tr class="dia-mes">
-                        <td>
-                            <div class="container-data">
-                                <div class="espaco-dia">
-                                    <span>Dia</span>
-                                </div>
-                                <div class="eventos"></div>
-                            </div>
-                        </td>
-                    </tr>-->
-                </table>
-            </div>
-            
+        <div class="container" id="main-cards" style="height: auto;">
+            <div id="cards">
+                <div class="card">
+                  <div class="imagem-oficina" id="card1"></div>
+                  <div class="nome-oficina">
+                    <p>Nome da oficina</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="imagem-oficina" id="card2"></div>
+                  <div class="nome-oficina">
+                    <p>Nome da oficina</p>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="imagem-oficina" id="card3"></div>
+                  <div class="nome-oficina">
+                    <p>Nome da oficina</p>
+                  </div>
+                </div>
+              </div>
         </div>
         <div class="dark-overlay"></div>
     </div>
 
     <script>
+                // Exemplo de dados obtidos do banco de dados (substitua esta parte pelos seus dados reais)
+        var dadosDoBancoDeDados = [
+            { nome: "Oficina 1", imagem: "caminho-da-imagem1.jpg" },
+            { nome: "Oficina 2", imagem: "caminho-da-imagem2.jpg" },
+            { nome: "Oficina 3", imagem: "caminho-da-imagem3.jpg" },
+            { nome: "Oficina 4", imagem: "caminho-da-imagem3.jpg" },
+            { nome: "Oficina 5", imagem: "caminho-da-imagem3.jpg" },
+            { nome: "Oficina 6", imagem: "caminho-da-imagem3.jpg" },
+            { nome: "Oficina 7", imagem: "caminho-da-imagem3.jpg" },
+            { nome: "Oficina 8", imagem: "caminho-da-imagem3.jpg" },
+            // Adicione mais dados aqui, se necessário
+        ];
+
+        // Função para criar um novo card e adicionar à lista existente
+        function adicionarNovoCard(nomeOficina, imagemOficina) {
+            var cardsContainer = document.getElementById("cards");
+
+            var novoCard = document.createElement("div");
+            novoCard.className = "card";
+
+            var imagemDiv = document.createElement("div");
+            imagemDiv.className = "imagem-oficina";
+            imagemDiv.style.backgroundImage = "url(" + imagemOficina + ")";
+
+            var nomeDiv = document.createElement("div");
+            nomeDiv.className = "nome-oficina";
+            var nomeParagrafo = document.createElement("p");
+            nomeParagrafo.textContent = nomeOficina;
+            nomeDiv.appendChild(nomeParagrafo);
+
+            novoCard.appendChild(imagemDiv);
+            novoCard.appendChild(nomeDiv);
+
+            cardsContainer.appendChild(novoCard);
+        }
+
+        // Loop para adicionar os dados do banco de dados como novos cards
+        for (var i = 0; i < dadosDoBancoDeDados.length; i++) {
+            var oficina = dadosDoBancoDeDados[i];
+            adicionarNovoCard(oficina.nome, oficina.imagem);
+        }
+
         function expandSidebar() {
             var sidebar = document.querySelector('.sidebar');
             sidebar.style.width = '15%';
@@ -315,46 +345,6 @@
             var content = document.querySelector('.content-container');
             content.classList.remove('dark');
         }
-
-        function createTableData() {
-            let calendario = document.getElementById('calendario-table');
-
-            for(let i = 0; i < 6; i++){
-                let newTr = document.createElement('tr');
-                newTr.classList.add('dia-mes');
-
-                calendario.appendChild(newTr);
-
-                for(let j = 0; j < 7; j++) {
-                    let newTd = document.createElement('td');
-
-                    let newContainerData = document.createElement('div');
-                    newContainerData.classList.add('container-data');
-
-                    let newEspacoDia = document.createElement('div');
-                    newEspacoDia.classList.add('espaco-dia');
-
-                    let newSpan = document.createElement('span');
-                    newSpan.innerText = 'Dia';
-
-                    let newEventos = document.createElement('div');
-                    newEventos.classList.add('eventos');
-
-                    newTr.appendChild(newTd);
-                    newTd.appendChild(newContainerData);
-                    newContainerData.appendChild(newEspacoDia);
-                    newContainerData.appendChild(newEventos)
-                    newEspacoDia.appendChild(newSpan);
-
-                    let newSpanEvento = document.createElement('span');
-                    newSpanEvento.innerText = 'Atividade para dia 20';
-                    newSpanEvento.classList.add('evento');
-                    newEventos.appendChild(newSpanEvento)
-                }
-            }
-        }
-
-        createTableData()
     </script>
 </body>
 </html>

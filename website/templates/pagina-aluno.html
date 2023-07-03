@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/reset.css">
+    <link rel="stylesheet" href="{% static 'reset.css' %}">
     <title>Quilombo Urbano</title>
     <style>
         html, body {
@@ -271,7 +272,7 @@
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
         <a href="https://www.google.com" target="_blank">
-            <img id="perfil-image" src="img/perfil.png" alt="Perfil">
+            <img id="perfil-image" src="{% static 'img/perfil.png'%}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
         <a href="https://www.google.com" target="_blank">

@@ -6,7 +6,13 @@
     <link rel="stylesheet" href="{% static 'register.css' %}">
 </head>
 <body>
-
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><script>alert('{{ message }}')</script></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <form method='post' action="{% url 'user:register' %}">
         {% csrf_token %}
         <div class="main-container">
@@ -17,30 +23,31 @@
             <div class="content-container">
                 <h1>Aluno</h1>
                 <div class="form-container">
-                    <input type="text" name="name" placeholder="Nome" style="width: 100%;">
-                    <input type="text" name="username" placeholder="Como gostaria de ser chamado?" style="width: 100%;"> 
+                    <input type="text" name="name" placeholder="Nome" style="width: 100%;" required>
+                    <input type="text" name="username" placeholder="Como gostaria de ser chamado?" style="width: 100%;" required> 
                     <div style="width: 100%;">
-                        <input placeholder="Data de Nascimento" name="birth_date" class="textbox-n" type="text" onfocus="(this.type='date')" id="date" />
-                        <input type="text" name="cpf" placeholder="CPF">
+                        <input placeholder="Data de Nascimento" name="birth_date" class="textbox-n" type="text" onfocus="(this.type='date')" id="date" required>
+
+                        <input type="text" name="cpf" placeholder="CPF" required>
                     </div>
                     <div style="width: 100%;">
-                        <select name="gender">
+                        <select name="gender" required>
                             <option value="">Sexo</option>
                             <option value="masculino">Masculino</option>
                             <option value="feminino">Feminino</option>
                         </select>
-                        <input type="email" name="email" placeholder="E-mail">
+                        <input type="email" name="email" placeholder="E-mail" required>
                     </div>
                     <div style="width: 100%;">
-                        <input type="text" name="address" placeholder="Endereço">
-                        <input type="text" name="responsavel" placeholder="Responsável">
+                        <input type="text" name="address" placeholder="Endereço" required>
+                        <input type="text" name="responsavel" placeholder="Responsável" required>
                     </div>
                     <div style="width: 100%;">
-                        <input type="text" name="phone_number" placeholder="Telefone">
-                        <input type="password" name="password" placeholder="Senha">
+                        <input type="text" name="phone_number" placeholder="Telefone" required>
+                        <input type="password" name="password" placeholder="Senha" required>
                     </div>
                     <div style="width: 100%;">
-                        <input type="password" name="repassword" placeholder="Confirmar Senha">
+                        <input type="password" name="repassword" placeholder="Confirmar Senha" required>
                     </div> 
                 </div>
                 <button type="submit" style="width: 20%; height: 5%; background-color: #FF7E21; color: #FFF; border: none; cursor: pointer; margin-top: auto; margin-bottom: 20px; display: block; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">Cadastrar</button>

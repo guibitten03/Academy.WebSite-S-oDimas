@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -211,27 +212,27 @@
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
         <a href="https://www.google.com" target="_blank">
-            <img id="perfil-image" src="perfil.png" alt="Perfil">
+            <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
         <a href="https://www.google.com" target="_blank">
-            <img id="calendario-image" src="calendario.png" alt="Calendário">
+            <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
         <a href="https://www.google.com" target="_blank">
-            <img id="oficinas-image" src="livro.png" alt="Minhas Oficinas">
+            <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Minhas Oficinas</span>
         </a>
     </div>
     <div class="top-bar-container">
         <div class="top-bar">
-            <a href="#">Opção 3</a>
+            <a href="#">Logo</a>
             <a href="{% url 'user:logout' %}">Sair</a>
         </div>
     </div>
     <div class="content-container">
         <div class="container"id="caixa1" style="height: 30vh;">
-            <img src="tururu.jpg" alt="Imagem" />
+            <img src="{% static '' %}" alt="Imagem" />
             <span id="dynamic-text">Placeholder</span>
             <span id="dynamic-codigo" style="top: 150px; font-size: 30px;">codigo</span>
         </div>

@@ -6,6 +6,15 @@
     <link rel="stylesheet" href="{% static 'register.css' %}">
 </head>
 <body>
+    
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><script>alert('{{ message }}')</script></li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <form method='POST'>
         <div class="main-container">
             <div class="green-container">
@@ -15,7 +24,7 @@
             <div class="content-container">
                 <h1>Adiministrador</h1>
                 <div class="form-container">
-                    <input type="text" name="nome" placeholder="Nome" style="width: 100%;">
+                    <input type="text" name="nome" placeholder="Nome" style="width: 100%;" required>
                     <div style="width: 100%;">
                         <input type="text" name="cpf" placeholder="CPF">
                         <input type="text" name="telefone" placeholder="Telefone">

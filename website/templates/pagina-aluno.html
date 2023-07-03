@@ -1,22 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'reset.css' %}">
-    <title>Quilombo Urbano</title>
+    <title>Usuário</title>
     <style>
-        html, body {
-            margin: 0;
-            overflow-x: hidden;
-        }
-
         body {
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            font-family: "Roboto", sans-serif;
         }
 
         .sidebar {
@@ -39,16 +32,17 @@
         }
 
         .sidebar img {
-            width: 40px;
+            width: 50px;
             aspect-ratio: 1/1;
             margin: 20px 10px;
+            
         }
 
         .sidebar a {
             text-decoration: none;
             color: white;
             font-size: 20px;
-            
+            font-family: "Roboto", sans-serif;
             display: flex;
             align-items: center;
             margin-left: 10px;
@@ -108,16 +102,16 @@
             align-items: center;
             color: white;
             font-size: 20px;
-            
+            font-family: "Roboto", sans-serif;
             margin: 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.5s;
         }
 
-        .top-bar img {
-
-            height: 50px;
-            margin: 0 20px;
+        .top-bar a {
+            text-decoration: none;
+            color: white;
+            margin: 0 2em;
         }
 
         .container {
@@ -128,6 +122,25 @@
             flex-direction: column;
             align-items: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adicionado sombra */
+            position: relative; /* Adicionado para posicionar a imagem */
+        }
+
+        .container img {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+
+        #caixa1 span {
+            font-family: "Roboto", sans-serif;
+            font-size: 42px;
+            position: absolute;
+            top: 50px;
+            left: 280px;
+            color: #333;
         }
 
         .sub-container {
@@ -142,26 +155,14 @@
             background-color: #2F2F37;
             width: 100%;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-around;
             align-items: center;
             color: white;
             font-size: 20px;
-
-            padding: 5px;
+            font-family: "Roboto", sans-serif;
             margin: 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: background-color 0.5s;
-        }
-
-        #nome-pagina-container {
-            height: 7vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #nome-pagina-container > span{
-            font-size: 150%;
         }
 
         /* Ajuste no espaçamento do conteúdo abaixo da barra do topo */
@@ -171,8 +172,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 100vw;
-
+            margin-left: 5%;
+            margin-top: 5vh;
             transition: background-color 0.5s;
         }
 
@@ -194,163 +195,62 @@
             opacity: 0.8;
         }
 
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
 
-        #oficinas {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 0;
+        .textos, .titulos {
+             display: flex;
             flex-wrap: wrap;
-        }
-
-        #oficinas .card {
-            display: flex;
             flex-direction: column;
-            justify-content: space-between;
-
-            background-color: #FF9C41;
-            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.312);
-
-            height: 350px;
-            aspect-ratio: 3/4;
-            margin: 10px 20px;
-
-            transition-property: transform;
-            transition-duration: 0.25s;
-            transition-timing-function: ease;
+            align-items: start;
         }
 
-        #oficinas .card .parte-superior {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        #oficinas .card .parte-superior > .imagem-oficina{
-            background-image: url(img/biblioteca.jpg);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-
-            margin: 20px;
-            width: 240px;
-            height: 150px;
-
-            border-radius: 3px;
-        }
-
-        #oficinas .card .parte-superior > span {
-            color: white;
-            font-size: 130%;
-            margin: 10px;
-        }
-
-        #oficinas .card .parte-inferior {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #oficinas .card .parte-inferior > img {
-            width: 50px;
-            margin-bottom: 20px;
-        }
-
-        .card:hover {
-            transform: scale(1.1);
-        }
-
+        .textos span,.titulos span {
+            box-sizing: border-box;
+            padding: 10px; /* Add spacing around the texts */
+            font-size: 30px;
+            font-family: "Roboto", sans-serif;
+        } 
 
     </style>
 </head>
 <body>
     <div class="sidebar" onmouseover="expandSidebar()" onmouseout="shrinkSidebar()">
-        <a href="https://www.google.com" target="_blank">
-            <img id="perfil-image" src="{% static 'img/perfil.png'%}" alt="Perfil">
+        <a href="{% url 'user:campus' user.user_id %}" target="_blank">
+            <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
-        <a href="https://www.google.com" target="_blank">
-            <img id="calendario-image" src="img/calendario.png" alt="Calendário">
+        <a href="{% url 'user:calendar' %}" target="_blank">
+            <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>
         <a href="https://www.google.com" target="_blank">
-            <img id="oficinas-image" src="img/livro.png" alt="Minhas Oficinas">
+            <img id="oficinas-image" src="{% static 'img/livro.png' %}" alt="Minhas Oficinas">
             <span id="oficinas-text">Minhas Oficinas</span>
         </a>
     </div>
     <div class="top-bar-container">
         <div class="top-bar">
-            <a href="index.html"><img src="img/simbolo3.png" alt="Logo - Quilombo Urbano"></a>
+            <a href="#">Logo</a>
+            <a href="{% url 'user:logout' %}">Sair</a>
         </div>
     </div>
-
-    <div id="nome-pagina-container">
-        <span id="nome">Oficinas</span>
-    </div>
-
     <div class="content-container">
-        <!--<div class="container" style="height: 30vh;"></div>-->
-        <div class="container">
-            <div id="oficinas">
-
-                <div class="card" id="oficina1">
-                    <div class="parte-superior">
-                        <div class="imagem-oficina"></div>
-                        <span>Nome</span>
-                    </div>
-                    <div class="parte-inferior">
-                        <img src="img/down-filled-triangular-arrow.png" alt="Seta para baixo">
-                    </div>
-                </div>
-
-                <div class="card" id="oficina2">
-                    <div class="parte-superior">
-                        <div class="imagem-oficina"></div>
-                        <span>Nome</span>
-                    </div>
-                    <div class="parte-inferior">
-                        <img src="img/down-filled-triangular-arrow.png" alt="Seta para baixo">
-                    </div>
-                </div>
-
-                <div class="card" id="oficina3">
-                    <div class="parte-superior">
-                        <div class="imagem-oficina"></div>
-                        <span>Nome</span>
-                    </div>
-                    <div class="parte-inferior">
-                        <img src="img/down-filled-triangular-arrow.png" alt="Seta para baixo">
-                    </div>
-                </div>
-
-                <div class="card" id="oficina4">
-                    <div class="parte-superior">
-                        <div class="imagem-oficina"></div>
-                        <span>Nome</span>
-                    </div>
-                    <div class="parte-inferior">
-                        <img src="img/down-filled-triangular-arrow.png" alt="Seta para baixo">
-                    </div>
-                </div>
-
-                <div class="card" id="oficina5">
-                    <div class="parte-superior">
-                        <div class="imagem-oficina"></div>
-                        <span>Nome</span>
-                    </div>
-                    <div class="parte-inferior">
-                        <img src="img/down-filled-triangular-arrow.png" alt="Seta para baixo">
-                    </div>
-                </div>
-
+        <div class="container" id="caixa1" style="height: 30vh;">
+            <img src="{% static 'img/profile.png' %}" alt="Imagem" />
+            <span id="dynamic-text">{{ user.name }}</span>
+            <span id="dynamic-codigo" style="top: 150px; font-size: 30px;">{{ user.user_id }}</span>
+        </div>
+        <div class="container" id="caixa2" style="height: 50vh; align-items: start;;">
+            <div class="titulos">
+                <span id="titulo-email">Email_______: {{user.email}}</span>
+                <span id="titulo-cpf">CPF_________: {{user.cpf}}</span>
+                <span id="titulo-endereco">Endereco____: {{user.address}}</span>
+                <span id="titulo-telefone">Telefone____: {{user.phone_number}}</span>
+                <span id="titulo-genero">Genero______: {{user.gender}}</span>
+                <span id="titulo-nascimento">Nascimento__: {{user.birth_date}}</span>
+                <span id="titulo-responsavel">Responsavel_: {{user.responsavel}}</span>
             </div>
         </div>
+    </div>
         <div class="dark-overlay"></div>
     </div>
 
@@ -368,6 +268,9 @@
             var content = document.querySelector('.content-container');
             content.classList.remove('dark');
         }
+
+ 
+
     </script>
 </body>
 </html>

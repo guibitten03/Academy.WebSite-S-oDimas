@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -59,15 +60,28 @@ def loginView(request):
         if user is not None:
             login(request, user)
             messages.success(request, 'Login successful! Welcome, ' + username)
-            return redirect('user:campus')
+            user_id = User.objects.get(username=username).id
+            print(user_id)
+            user = UserStudent.objects.get(user_id=user_id)
+            info = {'user': user}
+            return render(request, "pagina-aluno.html",info)
+        
         else:
             messages.error(request, 'Check your information and try again!')
-            return redirect('professor:login')
+            return redirect('user:login')
     else:
         return render(request, 'login.html')
     
-def studentView(request):
-    return render(request,'user_perfil.html')
+def studentView(request, user_id):
+    user = UserStudent.objects.get(user_id=user_id)
+    info = {'user': user}
+    return render(request, "pagina-aluno.html",info)
+
+def campusView(request):
+    return render(request,'pagina-aluno.html')
+
+def calendarView(request):
+    return render(request,'calendario.html')
 
 def logoutView(request):
     logout(request)

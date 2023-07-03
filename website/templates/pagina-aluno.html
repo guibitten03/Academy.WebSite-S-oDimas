@@ -219,7 +219,7 @@
             <img id="perfil-image" src="{% static 'img/perfil.png' %}" alt="Perfil">
             <span id="perfil-text">Perfil</span>
         </a>
-        <a href="{% url 'user:calendar' %}" target="_blank">
+        <a href="{% url 'user:calendar' user.user_id %}" target="_blank">
             <img id="calendario-image" src="{% static 'img/calendario.png' %}" alt="Calendário">
             <span id="calendario-text">Calendário</span>
         </a>

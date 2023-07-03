@@ -85,6 +85,9 @@ def calendarView(request, user_id):
     info = {'user': user}
     return render(request, "calendario-aluno.html",info)
 
+def listaOficinasView(request, user_id):
+    pass
+
 def logoutView(request):
     logout(request)
     messages.success(request, 'You have successfully logged out.')
